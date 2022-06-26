@@ -1,0 +1,532 @@
+* {
+    list-style: none;
+    /*목록의 점 없애기*/
+    text-decoration: none;
+    /*하이퍼링크 css 지우기*/
+    border-collapse: collapse;
+    /*테이플 선 붙여줌*/
+    margin: 0px;
+    padding: 0px;
+    color: #000;
+    /*기본 폰트 색*/
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* media query*/
+/* md 아래로 */
+@media screen and (max-width: 991px) {
+    .top_nav .hidden {
+        display: inline;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .main_nav .right_nav,
+    .main_nav .search_area {
+        display: none;
+    }
+
+    /* footer */
+    /* under_info */
+    .under_info {
+        visibility: hidden;
+    }
+
+    /* last_info */
+    .last_info {
+        margin-top: -270px;
+    }
+
+    .last_info .left {
+        display: none;
+    }
+
+    .last_info .right span,
+    .last_info .right p {
+        font-size: 11px;
+    }
+}
+
+/*xs*/
+@media screen and (max-width: 575px) {
+
+    .content1 .right .h6,
+    .content3 .right .h6 {
+        font-size: 13px;
+    }
+
+    .content1 .right p,
+    .content3 .right p {
+        font-size: 11px;
+    }
+
+    .content1 .left img {
+        margin-bottom: 40px;
+    }
+
+    /*top_nav*/
+    .top_nav .nav_logo img {
+        width: 110px;
+    }
+
+    .top_nav .nav_nav .sign_in_out {
+        display: none;
+    }
+
+    .top_nav .nav_nav .hidden.login {
+        display: inline;
+        font-size: 16px;
+    }
+
+    /*main_nav*/
+    .main_nav span {
+        font-size: 13px;
+        margin-right: 8px;
+    }
+
+    /*main*/
+    .carousel.slide img {
+        width: 700px;
+        height: 280px;
+    }
+
+    /*content1*/
+    .content1 .left span,
+    .content3 .left span {
+        font-size: 14px;
+    }
+
+    .content1 .left p,
+    .content3 .left p {
+        font-size: 15px;
+    }
+
+    .content1 .left_img {
+        width: 148px;
+    }
+
+    .right_icon div {
+        width: 30px;
+        height: 17px;
+    }
+
+    .right_icon .SALEicon,
+    .right_icon .BESTicon,
+    .right_icon .NEWicon {
+        font-size: 1px;
+    }
+    
+    .right_item{
+        margin-bottom: 30px;
+    }
+}
+
+/*sm*/
+@media screen and (max-width:767px) {
+    .top_nav .hidden.login {
+        display: none;
+    }
+
+    .last_info {
+        margin-top: -370px;
+    }
+
+    .right_item{
+        margin-bottom: 30px;
+    }
+}
+
+/*md*/
+@media screen and (max-width: 991px) and (min-width: 768px) {
+
+    /* header */
+    .top_nav .hidden.login {
+        display: none;
+    }
+
+    .top_nav img {
+        width: 50%;
+    }
+
+    .main_nav .left_nav {
+        margin-top: -25px;
+    }
+
+    .main_nav .left_nav span {
+        font-size: 13px;
+    }
+
+    /* main */
+    main .carouselExampleControls .carousel-inner .carousel-item img {
+        /*이미지를 어케.. 크게 할까*/
+        overflow: hidden;
+    }
+
+    /* content1 */
+    .content1 .left p,
+    .content3 .left p {
+        font-size: 15px;
+    }
+
+    .content1 .left_text,
+    .content3 .left_text {
+        font-size: 14px;
+    }
+
+    .content1 .left {
+        display: flex;
+    }
+
+
+    .bundry1,
+    .bundry2 {
+        display: flex;
+    }
+}
+
+/*lg이상 */
+@media screen and (min-width: 992px) {
+    .top_nav .hidden {
+        display: none;
+    }
+
+    .under_info .text strong,
+    .under_info .left>p,
+    .under_info .right>p {
+        font-size: 12px;
+    }
+
+
+    .bundry1,
+    .bundry2 {
+        display: flex;
+    }
+}
+
+/* nav */
+/* top_nav */
+.top_nav .nav_nav {
+    text-align: right;
+}
+
+.top_nav .nav_nav span {
+    color: #00913a;
+    font-size: 16px;
+}
+
+.top_nav a {
+    text-decoration: none;
+}
+
+.top_nav i {
+    color: #00913a;
+}
+
+.top_nav a:hover span,
+.top_nav a:hover i {
+    color: #656565;
+}
+
+/*main_nav*/
+.main_nav .left_nav>a {
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.main_nav .left_nav span {
+    color: #00913a;
+}
+
+.main_nav .left_nav a:hover span {
+    color: #dadada;
+}
+
+.main_nav .right_nav {
+    text-align: right;
+    font-size: 16px;
+}
+
+.main_nav .right_nav a,
+span {
+    text-decoration: none;
+    color: #646464;
+}
+
+.main_nav .right_nav a:hover span {
+    color: #00913a;
+}
+
+.main_nav .search_area {
+    width: 200px;
+    height: 34px;
+}
+
+/*검색창*/
+.main_nav .search_type {
+    width: 200px;
+    height: 34px;
+    border: 1px solid #dadada;
+    border-radius: 20px;
+}
+
+.main_nav input {
+    width: 160px;
+    border: none;
+    background-color: transparent;
+}
+
+.main_nav input::placeholder {
+    font-size: 14px;
+    color: #aeaeae;
+}
+
+/* //nav */
+
+/* main */
+/* content1, content3 */
+.left p {
+    font-size: 20px;
+    color: #646464;
+    font-weight: bold;
+}
+
+.left_text {
+    color: #646464;
+    font-size: 16px;
+}
+
+.right_item,
+.right_item div {
+    font-size: 15px;
+}
+
+.right_price {
+    display: flex;
+}
+
+.right_recent_price {
+    font-weight: none;
+    color: #00913a;
+    margin: 0px 0px 4.5px 0px;
+}
+
+.right_item>.h6 {
+    font-weight: normal;
+    color: #656565;
+}
+
+.right_origin_price {
+    text-decoration: line-through;
+    color: #64646480;
+    margin-bottom: 0px;
+}
+
+.NEWicon {
+    width: 43px;
+    height: 23px;
+    text-align: center;
+    color: white;
+    background-color: #00913a;
+    font-weight: lighter;
+    margin-right: 5px;
+}
+
+.SALEicon {
+    width: 43px;
+    height: 23px;
+    text-align: center;
+    color: white;
+    background-color: #FE5356;
+    font-weight: lighter;
+    margin-right: 5px;
+}
+
+.BESTicon {
+    width: 43px;
+    height: 23px;
+    text-align: center;
+    color: #FE5356;
+    background-color: #ffffff;
+    border: 1px solid #64646480;
+    font-weight: lighter;
+    margin-right: 5px;
+}
+
+.right_icon {
+    display: flex;
+}
+
+.right_icon>div {
+    font-size: xx-small;
+}
+
+/* //content1 */
+
+/* content2 */
+.content2 {
+    background-color: #ffffe9;
+}
+
+.content2_left>img,
+.content2_right img {
+    border-radius: 15px;
+}
+
+/* //content2 */
+
+/* content3 */
+/* //content3 */
+
+/* content4 */
+.content4 {
+    background-color: #00913a;
+    text-align: center;
+}
+
+.content4_title {
+    color: white;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.content4 .content4_contents {
+    display: flex;
+}
+
+.content4_left,
+.content4_right,
+.content4_midst {
+    background-color: white;
+    border-radius: 15px;
+}
+
+.content4 strong {
+    font-size: 18px;
+}
+
+.content4 .text {
+    font-size: 18px;
+    text-align: center;
+    color: #00913a;
+}
+
+.content4 .text_value {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/* //content4 */
+
+/* content5 */
+.content5 .contents {
+    display: flex;
+}
+
+.content5 .title {
+    color: #00913a;
+    font-weight: bold;
+}
+
+/* //content5 */
+/* //main */
+
+/* footer */
+/* num_info */
+.num_info .text,
+.num_info strong {
+    color: #646464;
+    font-size: 16px;
+}
+
+.num_info .text_title {
+    color: #646464;
+    font-size: 24px;
+}
+
+/* //num_info */
+
+/* under_info */
+.under_info {
+    display: flex;
+}
+
+.under_info .right .text_title {
+    color: #646464;
+    font-weight: normal;
+}
+
+.under_info .store {
+    width: 16%;
+}
+
+.under_info .text_title {
+    color: #00913a;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.under_info .left .line {
+    margin: 0px;
+    border-bottom: 1px solid #00913a;
+    margin-bottom: 8px;
+}
+
+.under_info .right .line {
+    margin: 0px;
+    border-bottom: 1px solid #646464;
+    margin-bottom: 8px;
+}
+
+.under_info .text,
+.under_info strong {
+    color: #646464;
+    font-size: 14px;
+}
+
+/* //under_info */
+
+/* last_info */
+.last_info {
+    background-color: #00913a;
+}
+
+.last_info .container {
+    display: flex;
+}
+
+.last_info .right ul {
+    font-size: 16px;
+    display: flex;
+    padding: 0px;
+}
+
+.last_info .right .etc {
+    font-size: 15px;
+    line-height: 160%;
+}
+
+.last_info .right p {
+    color: white;
+}
+
+.last_info a {
+    text-decoration: none;
+    font-weight: bold;
+    background-color: white;
+    color: #00913a;
+}
+
+.last_info span {
+    color: white;
+}
+
+/* //last_info */
+/* //footer */
