@@ -56,21 +56,6 @@ body {
 
 /*xs*/
 @media screen and (max-width: 575px) {
-
-    .content1 .right .h6,
-    .content3 .right .h6 {
-        font-size: 13px;
-    }
-
-    .content1 .right p,
-    .content3 .right p {
-        font-size: 11px;
-    }
-
-    .content1 .left_img {
-        margin-bottom: 40px;
-    }
-
     /*top_nav*/
     .top_nav .nav_logo img {
         width: 110px;
@@ -92,15 +77,9 @@ body {
     }
 
     /*main*/
-
     /*content1*/
     .content1 .left{
         display: flex;
-    }
-
-    .content1 img{
-        
-        background-color: skyblue;
     }
 
     .content1 .left span,
@@ -117,8 +96,22 @@ body {
         width: 148px;
     }
 
-    .content1 .bundry1{
-        display: block;
+    .content1 .right{
+        display: flex;
+    }
+
+    .content1 .right .h6,
+    .content3 .right .h6 {
+        font-size: 13px;
+    }
+
+    .content1 .right p,
+    .content3 .right p {
+        font-size: 11px;
+    }
+
+    .content1 .left_img {
+        margin-bottom: 40px;
     }
 
     .right_icon div {
@@ -152,6 +145,13 @@ body {
         margin-bottom: 10px;
     }
 
+    .content1 .bundry1, 
+    .content3 .bundry1,
+    .content1 .bundry2
+    {
+        display: flex;
+    }
+
     .content1 .left_img{
         width: 60%;
     }
@@ -162,18 +162,6 @@ body {
 
     .right_item{
         margin-bottom: 30px;
-    }
-
-    .content1 .bundry1, 
-    .content3 .bundry1,
-    .content1 .bundry2
-    {
-        display: flex;
-        justify-content: center;
-    }
-
-    .content1 .bundry1{
-        padding-left: 85px;
     }
 
 }
