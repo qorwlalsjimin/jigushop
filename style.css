@@ -67,7 +67,7 @@ body {
         font-size: 11px;
     }
 
-    .content1 .left img {
+    .content1 .left_img {
         margin-bottom: 40px;
     }
 
@@ -98,6 +98,15 @@ body {
     }
 
     /*content1*/
+    .content1 .left{
+        display: flex;
+    }
+
+    .content1 img{
+        
+        background-color: skyblue;
+    }
+
     .content1 .left span,
     .content3 .left span {
         font-size: 14px;
@@ -112,6 +121,10 @@ body {
         width: 148px;
     }
 
+    .content1 .bundry1{
+        display: block;
+    }
+
     .right_icon div {
         width: 30px;
         height: 17px;
@@ -120,18 +133,31 @@ body {
     .right_icon .SALEicon,
     .right_icon .BESTicon,
     .right_icon .NEWicon {
-        font-size: 1px;
+        font-size: 10rem;
     }
     
     .right_item{
         margin-bottom: 30px;
     }
+
+    .last_info{
+        margin-top: -400px;
+    }
 }
 
 /*sm*/
-@media screen and (max-width:767px) {
+@media screen and (max-width:767px) and (min-width:576px) {
     .top_nav .hidden.login {
         display: none;
+    }
+
+    .content1 .left{
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .content1 .left_img{
+        width: 60%;
     }
 
     .last_info {
@@ -140,6 +166,13 @@ body {
 
     .right_item{
         margin-bottom: 30px;
+    }
+
+    .content1 .bundry1, 
+    .content3 .bundry1,
+    .content1 .bundry2
+    {
+        display: flex;
     }
 }
 
@@ -184,7 +217,6 @@ body {
         display: flex;
     }
 
-
     .bundry1,
     .bundry2 {
         display: flex;
@@ -195,6 +227,10 @@ body {
 @media screen and (min-width: 992px) {
     .top_nav .hidden {
         display: none;
+    }
+
+    .content1 .left_img{
+        width: 100%;
     }
 
     .under_info .text strong,
@@ -491,6 +527,15 @@ span {
     font-size: 14px;
 }
 
+.under_info .right a{
+    text-decoration: none;
+    color: #646464;
+}
+
+.under_info .right a:hover{
+    color: #00913a;
+}
+
 /* //under_info */
 
 /* last_info */
@@ -521,6 +566,10 @@ span {
     text-decoration: none;
     font-weight: bold;
     background-color: white;
+    color: #00913a;
+}
+
+.last_info a:hover{
     color: #00913a;
 }
 
