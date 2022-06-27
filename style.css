@@ -40,10 +40,6 @@ body {
     }
 
     /* last_info */
-    .last_info {
-        margin-top: -270px;
-    }
-
     .last_info .left {
         display: none;
     }
@@ -128,10 +124,6 @@ body {
     .right_item{
         margin-bottom: 30px;
     }
-
-    /* .last_info{
-        margin-top: -400px;
-    } */
 }
 
 /*sm*/
@@ -154,10 +146,6 @@ body {
 
     .content1 .left_img{
         width: 60%;
-    }
-
-    .last_info {
-        margin-top: -370px;
     }
 
     .right_item{
