@@ -92,10 +92,6 @@ body {
     }
 
     /*main*/
-    .carousel.slide img {
-        width: 700px;
-        height: 280px;
-    }
 
     /*content1*/
     .content1 .left{
@@ -133,7 +129,7 @@ body {
     .right_icon .SALEicon,
     .right_icon .BESTicon,
     .right_icon .NEWicon {
-        font-size: 10rem;
+        font-size: 10px;
     }
     
     .right_item{
@@ -173,7 +169,13 @@ body {
     .content1 .bundry2
     {
         display: flex;
+        justify-content: center;
     }
+
+    .content1 .bundry1{
+        padding-left: 85px;
+    }
+
 }
 
 /*md*/
