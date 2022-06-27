@@ -35,8 +35,8 @@ body {
 
     /* footer */
     /* under_info */
-    .under_info {
-        visibility: hidden;
+    footer .under_info {
+        display: none;
     }
 
     /* last_info */
@@ -151,7 +151,6 @@ body {
     .right_item{
         margin-bottom: 30px;
     }
-
 }
 
 /*md*/
@@ -199,6 +198,10 @@ body {
     .bundry2 {
         display: flex;
     }
+
+    .BESTicon, .NEWicon, .SALEicon{
+        font-size: 14px;
+    }
 }
 
 /*lg이상 */
@@ -216,7 +219,6 @@ body {
     .under_info .right>p {
         font-size: 12px;
     }
-
 
     .bundry1,
     .bundry2 {
