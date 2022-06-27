@@ -108,6 +108,7 @@ body {
 
     .content1 .left_img {
         margin-bottom: 40px;
+        text-align: right;
     }
 
     .right_icon div {
@@ -146,6 +147,7 @@ body {
 
     .content1 .left_img{
         width: 60%;
+        text-align: right;
     }
 
     .right_item{
@@ -192,6 +194,10 @@ body {
 
     .content1 .left {
         display: flex;
+    }
+    
+    .left .left_img{
+        text-align: right;
     }
 
     .bundry1,
