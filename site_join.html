@@ -67,23 +67,55 @@
         <!--//nav-->
     </header>
 
+    <hr>
+
     <main>
-        <div class="login_box container">
-            <div class="img_box w-75">
-                <img class="w-25" src="https://cdn.imweb.me/thumbnail/20200516/bd6d0ab83943e.jpg">
-            </div>
-            <!--img_box-->
-            <div class="widget">
-                <form action="" method="post">
-                    <div class="naver">
-                        <button type="button" class="btn_naver btn btn-outline-success mb-3 w-50" onclick="window.location.href = 'notice.html'">네이버로 시작하기</button>
+        <div class="join container">
+            <form class="w-100" method="post" action=".php">
+                <div class="mt-5 mb-1 row">
+                    <div class="mb-3 row">
+                        <div class="info_secret col-sm-12 mb-4">
+                            <input type="email" class="form-control mb-1" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="이메일">
+                            <input type="password" class="form-control mb-1" id="inputPassword" placeholder="비밀번호">
+                            <input type="password" class="form-control" id="inputPassword" placeholder="비밀번호 확인">
+                        </div><!--//info_secret-->
+
+                        <div class="info_basic col-sm-12">
+                            <div class="name mb-4">
+                                <label for="exampleInputEmail1" class="form-label">이름<i class="ms-1 fa-solid fa-circle-dot" style="color: skyblue;"></i></label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="이름을(를) 입력하세요">
+                            </div><!--//name-->
+                            <div class="gender mb-4">
+                                <label for="exampleInputEmail1" class="form-label">성별</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="male">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                      남자
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="female">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                      여자
+                                    </label>
+                                </div>
+                            </div><!--//gender-->
+                            <div class="number mb-4">
+                                <label for="exampleInputEmail1" class="form-label">연락처</label>
+                                <input type="tel" class="form-control" id="number" aria-describedby="number" placeholder="연락처">
+                            </div><!--//name-->
+                        </div><!--//info_basic-->
+                        <div class="btn">
+                            <div class="btn_join d-grid">
+                                <button type="button" class="btn btn-success"  onclick="window.location.href = 'notice.html'">가입하기</button>
+                            </div>
+                        </div>
                     </div>
-                    <button type="button" class="btn btn-secondary w-50" onclick="window.location.href = 'site_join.html'">ID/PW 회원가입</button></a>
-                </form>
-            </div>
-            <!--//widget-->
+                </div>
+            </form>
         </div>
-        <!--//container-->
+        <!--//join container-->
     </main>
 
 
