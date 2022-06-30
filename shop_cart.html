@@ -67,29 +67,53 @@
         <div class="shop-tit container">
             <div class="row">
                 <div class="col align-self-start d-lg-flex">
-                    <div class="text me-2">장바구니</div>
-                    <span class="b_cnt bg-secondary rounded-circle"><small class="text-white "> &nbsp;&nbsp;1&nbsp;&nbsp;</small></span> <!--장바구니 품목 개수-->
+                    <div class="text me-2 h6">장바구니</div>
+                    <span class="b_cnt">&nbsp;2&nbsp;</span>
                 </div>
             </div><!--//row-->
         </div><!--//shop-tit-->
         
         <table class="table container align-middle ">
-                <tr>
-                    <th><small class="text-secondary h6">상품 정보</small></th>
-                    <th><small class="text-secondary h6">수량</small></th>
-                    <th><small class="text-secondary h6">주문금액</small></th>
-                    <th><small class="text-secondary h6">배송 정보</small></th>
-                </tr>
-                <tr>
+                <tr><!--열 이름-->
                     <th>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        <small class="text-secondary lead" style="font-size: 0.8em;">상품 정보</small>
+                    </th>
+                    <th class="text-center"><small class="text-secondary lead" style="font-size: 0.8em;">수량</small></th>
+                    <th class="text-center"><small class="text-secondary lead" style="font-size: 0.8em;">주문금액</small></th>
+                    <th class="text-center"><small class="text-secondary lead" style="font-size: 0.8em;">배송 정보</small></th>
+                </tr><!--//열 이름-->
+                <tr><!--첫번째 상품-->
+                    <td class="d-flex py-3">
+                        <div class="checkItem me-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        </div>
+                        
+                            <img class="w-25 me-3" src="https://cdn.imweb.me/thumbnail/20220525/cf4442c6560b9.jpg" alt="cart item">
+                        
+                        <p><small class="text-secondary" style="font-size: 0.9em;">[지구샵]&nbsp;키친클로스(체크)</small></p>
                         <!-- 
-                        //장바구니 비었을때
+                            //상품 없을때
                         <i class="fa-solid fa-cart-shopping text-secondary"></i>
                         <div class="cart_message lead"><small class="text-secondary">장바구니가 비어있습니다.</small> </div> 
                         -->
-                    </th>
-                    <th></th>
-                </tr>
+                    </td>
+                    <td class="py-3 text-center">
+                        <div class="cntItem text-secondary">1</div>
+                        <div class="changeItem_div mt-1">
+                            <a class="btn_changeItem text-decoration-none bg-secondary text-white rounded p-1 lead" style="font-size: 0.7em;" href="#">옵션/수량 변경</a>
+                        </div>
+                    </td>
+                    <td class="py-3 text-center">
+                        <span class="price_text text-secondary h6" style="font-weight: bolder;">17,500원</span>
+                        <div class="directBuy_div mt-1">
+                            <a class="btn_directBuy_div text-decoration-none bg-success text-white rounded p-1 lead" style="font-size: 0.7em;" href="#">바로구매</a>
+                        </div>
+                    </td>
+                    <td class="py-3 text-center text-secondary" style="font-weight: bolder;"">
+                        3,000원
+                    </td>
+                </tr><!--//첫번째 상품-->
                 <caption><a class="text-success" href="index.html">계속 쇼핑하기</a></caption>
         </table>
     </main>
