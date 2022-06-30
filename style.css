@@ -339,7 +339,7 @@ span {
     margin: 0px 0px 4.5px 0px;
 }
 
-.right_item>.h6 {
+.right_item .h6 {
     font-weight: normal;
     color: #656565;
 }
@@ -396,7 +396,7 @@ span {
     background-color: #ffffe9;
 }
 
-.content2_left>img,
+.content2_left img,
 .content2_right img {
     border-radius: 15px;
 }
@@ -454,6 +454,10 @@ span {
 .content5 .title {
     color: #00913a;
     font-weight: bold;
+}
+
+.content5 a:hover .original{
+    filter: brightness(70%);
 }
 
 /* //content5 */
