@@ -565,3 +565,27 @@ span {
 
 /* //last_info */
 /* //footer */
+
+/* index.html */
+main .login_box .widget form .loginHelp a {
+    text-decoration: none;
+    color: #646464;
+    font-size: 0.8em;
+}
+
+main .login_box .widget form .form-check{
+    text-decoration: none;
+    color: #646464;
+    font-size: 0.8em;
+}
+/* //index.html */
+
+/* login.html */
+.login_box .img_box img{
+    margin-left: 500px;
+}
+
+.login_box .widget{
+    margin-left: 400px;
+}
+/* //login.html */
