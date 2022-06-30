@@ -88,10 +88,10 @@
                         <div class="checkItem me-3">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
                         </div>
-                        
-                            <img class="w-25 me-3" src="https://cdn.imweb.me/thumbnail/20220525/cf4442c6560b9.jpg" alt="cart item">
-                        
-                        <p><small class="text-secondary" style="font-size: 0.9em;">[지구샵]&nbsp;키친클로스(체크)</small></p>
+                            <a href="#" class="text-decoration-none">
+                                <img class="me-3" src="https://cdn.imweb.me/thumbnail/20220525/cf4442c6560b9.jpg" alt="cart item">
+                            </a>
+                        <p><a href="#" class="text-decoration-none"><small class="text-secondary" style="font-size: 0.9em;">[지구샵]&nbsp;키친클로스(체크)</small></a></p>
                         <!-- 
                             //상품 없을때
                         <i class="fa-solid fa-cart-shopping text-secondary"></i>
@@ -110,11 +110,40 @@
                             <a class="btn_directBuy_div text-decoration-none bg-success text-white rounded p-1 lead" style="font-size: 0.7em;" href="#">바로구매</a>
                         </div>
                     </td>
-                    <td class="py-3 text-center text-secondary" style="font-weight: bolder;"">
+                    <td class="py-3 text-center text-secondary" rowspan="2" style="font-weight: bolder;">
                         3,000원
                     </td>
                 </tr><!--//첫번째 상품-->
-                <caption><a class="text-success" href="index.html">계속 쇼핑하기</a></caption>
+                <tr><!--두번째 상품-->
+                    <td class="d-flex py-3">
+                        <div class="checkItem me-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        </div>
+                        <a href="#" class="text-decoration-none">
+                            <img class="me-3" src="https://cdn.imweb.me/thumbnail/20211113/1ce4be5df9e9c.jpg" alt="cart item">
+                        </a>
+                        <p><a href="#" class="text-decoration-none"><small class="text-secondary" style="font-size: 0.9em;">[지구샵]&nbsp;온몸비누 (자몽) 100g</small></a></p>
+                        <!-- 
+                            //상품 없을때
+                        <i class="fa-solid fa-cart-shopping text-secondary"></i>
+                        <div class="cart_message lead"><small class="text-secondary">장바구니가 비어있습니다.</small> </div> 
+                        -->
+                    </td>
+                    <td class="py-3 text-center">
+                        <div class="cntItem text-secondary">1</div>
+                        <div class="changeItem_div mt-1">
+                            <a class="btn_changeItem text-decoration-none bg-secondary text-white rounded p-1 lead" style="font-size: 0.7em;" href="#">옵션/수량 변경</a>
+                        </div>
+                    </td>
+                    <td class="py-3 text-center">
+                        <span class="price_text text-secondary h6" style="font-weight: bolder;">13,400원</span>
+                        <div class="directBuy_div mt-1">
+                            <a class="btn_directBuy_div text-decoration-none bg-success text-white rounded p-1 lead" style="font-size: 0.7em;" href="#">바로구매</a>
+                        </div>
+                    </td>
+                    <!--배송 정보 들어갈 부분-->
+                </tr><!--//두번째 상품-->
+                <caption class="text-center"><a class="text-success" href="index.html">계속 쇼핑하기</a></caption>
         </table>
     </main>
     
