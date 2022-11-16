@@ -71,13 +71,20 @@
 
     <main>
         <div class="join container ">
-            <form class="w-100" method="post" action=".php">
+            <form class="w-100" method="post" action="join.php">
                 <div class="mt-5 mb-1 row justify-content-lg-center">
                     <div class="mb-3 col-sm-12 col-lg-6 row">
-                        <div class="info_secret mb-4">
-                            <input type="email" class="form-control mb-4" id="email" name="email" aria-describedby="emailHelp" placeholder="이메일">
-                            <input type="password" class="form-control mb-1" id="pass" name="pass" placeholder="비밀번호">
-                            <input type="password" class="form-control" id="passcheck" name="passcheck" placeholder="비밀번호 확인">
+                        <div class="info_secret mb-1">
+                            <div class="name mb-4">
+                                <label for="exampleInputEmail1" class="form-label">아이디<i class="ms-1 fa-solid fa-circle-dot" style="color: skyblue;"></i></label>
+                                <input type="text" class="form-control mb-4" id="id" name="id" placeholder="아이디">
+                            </div><!--//id-->
+
+                            <div class="name mb-4">
+                                <label for="exampleInputEmail1" class="form-label">비밀번호<i class="ms-1 fa-solid fa-circle-dot" style="color: skyblue;"></i></label>
+                                <input type="password" class="form-control mb-1" id="pass" name="pass" placeholder="비밀번호">
+                                <input type="password" class="form-control" id="passcheck" name="passcheck" placeholder="비밀번호 확인">                            
+                            </div><!--//pass-->
                         </div><!--//info_secret-->
 
                         <div class="info_basic">
@@ -85,6 +92,12 @@
                                 <label for="exampleInputEmail1" class="form-label">이름<i class="ms-1 fa-solid fa-circle-dot" style="color: skyblue;"></i></label>
                                 <input type="email" class="form-control" id="name" name="name" placeholder="이름을(를) 입력하세요">
                             </div><!--//name-->
+
+                            <div class="name mb-4">
+                                <label for="exampleInputEmail1" class="form-label">이메일</label>
+                                <input type="email" class="form-control mb-4" id="email" name="email" aria-describedby="emailHelp" placeholder="이메일">
+                            </div><!--//email-->
+
                             <div class="gender mb-4">
                                 <label for="exampleInputEmail1" class="form-label">성별</label>
                                 <div class="form-check">
