@@ -21,7 +21,7 @@
             <div class="row justify-content-between pt-lg-3 pt-sm-2 me-xxl-4 me-lg-0">
                 <div class="nav_logo col-4 col-xs-1 ps-lg-4">
                     <a href="index.html"><img class="top_nav_logo_img mt-1 pt-md-1 wd-75"
-                            src="https://cdn.imweb.me/thumbnail/20220504/9ab32366d9ebd.png" alt="지구샵"
+                            src="https://cdn.imweb.me/thumbnail/20220504/5fd02ac97337a.png" alt="지구샵"
                             width="158.535211268"></a>
                 </div>
                 <div
@@ -70,32 +70,31 @@
     <hr>
 
     <main>
-        <div class="join container">
+        <div class="join container ">
             <form class="w-100" method="post" action=".php">
-                <div class="mt-5 mb-1 row">
-                    <div class="mb-3 row">
-                        <div class="info_secret col-sm-12 mb-4">
-                            <input type="email" class="form-control mb-1" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="이메일">
-                            <input type="password" class="form-control mb-1" id="inputPassword" placeholder="비밀번호">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="비밀번호 확인">
+                <div class="mt-5 mb-1 row justify-content-lg-center">
+                    <div class="mb-3 col-sm-12 col-lg-6 row">
+                        <div class="info_secret mb-4">
+                            <input type="email" class="form-control mb-4" id="email" name="email" aria-describedby="emailHelp" placeholder="이메일">
+                            <input type="password" class="form-control mb-1" id="pass" name="pass" placeholder="비밀번호">
+                            <input type="password" class="form-control" id="passcheck" name="passcheck" placeholder="비밀번호 확인">
                         </div><!--//info_secret-->
 
-                        <div class="info_basic col-sm-12">
+                        <div class="info_basic">
                             <div class="name mb-4">
                                 <label for="exampleInputEmail1" class="form-label">이름<i class="ms-1 fa-solid fa-circle-dot" style="color: skyblue;"></i></label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="이름을(를) 입력하세요">
+                                <input type="email" class="form-control" id="name" name="name" placeholder="이름을(를) 입력하세요">
                             </div><!--//name-->
                             <div class="gender mb-4">
                                 <label for="exampleInputEmail1" class="form-label">성별</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="male">
+                                    <input class="form-check-input" type="radio" name="gender" id="male">
                                     <label class="form-check-label" for="flexRadioDefault1">
                                       남자
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="female">
+                                    <input class="form-check-input" type="radio" name="gender" id="female">
                                     <label class="form-check-label" for="flexRadioDefault2">
                                       여자
                                     </label>
@@ -103,12 +102,12 @@
                             </div><!--//gender-->
                             <div class="number mb-4">
                                 <label for="exampleInputEmail1" class="form-label">연락처</label>
-                                <input type="tel" class="form-control" id="number" aria-describedby="number" placeholder="연락처">
+                                <input type="tel" class="form-control" id="number" name="number" placeholder="연락처">
                             </div><!--//name-->
                         </div><!--//info_basic-->
                         <div class="btn">
                             <div class="btn_join d-grid">
-                                <button type="button" class="btn btn-success"  onclick="window.location.href = 'notice.html'">가입하기</button>
+                                <button type="submit" class="btn btn-success"  onclick="window.location.href = 'notice.html'">가입하기</button>
                             </div>
                         </div>
                     </div>
