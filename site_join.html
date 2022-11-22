@@ -82,15 +82,15 @@
 
                             <div class="name mb-4">
                                 <label for="exampleInputEmail1" class="form-label">비밀번호<i class="ms-1 fa-solid fa-circle-dot" style="color: skyblue;"></i></label>
-                                <input type="password" class="form-control mb-1" id="pass" name="pass" placeholder="비밀번호">
-                                <input type="password" class="form-control" id="passcheck" name="passcheck" placeholder="비밀번호 확인">                            
+                                <input type="password" class="form-control mb-1" id="pw" name="pw" placeholder="비밀번호">
+                                <input type="password" class="form-control" id="pwcheck" name="pwcheck" placeholder="비밀번호 확인">                            
                             </div><!--//pass-->
                         </div><!--//info_secret-->
 
                         <div class="info_basic">
                             <div class="name mb-4">
                                 <label for="exampleInputEmail1" class="form-label">이름<i class="ms-1 fa-solid fa-circle-dot" style="color: skyblue;"></i></label>
-                                <input type="email" class="form-control" id="name" name="name" placeholder="이름을(를) 입력하세요">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="이름을(를) 입력하세요">
                             </div><!--//name-->
 
                             <div class="name mb-4">
@@ -101,13 +101,13 @@
                             <div class="gender mb-4">
                                 <label for="exampleInputEmail1" class="form-label">성별</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" id="male">
+                                    <input class="form-check-input" type="radio" name="gender" value="male">
                                     <label class="form-check-label" for="flexRadioDefault1">
                                       남자
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" id="female">
+                                    <input class="form-check-input" type="radio" name="gender" value="female">
                                     <label class="form-check-label" for="flexRadioDefault2">
                                       여자
                                     </label>
@@ -120,7 +120,7 @@
                         </div><!--//info_basic-->
                         <div class="btn">
                             <div class="btn_join d-grid">
-                                <button type="submit" class="btn btn-success"  onclick="window.location.href = 'notice.html'">가입하기</button>
+                                <button type="submit" class="btn btn-success">가입하기</button>
                             </div>
                         </div>
                     </div>
