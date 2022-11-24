@@ -13,7 +13,7 @@
       mysqli_query($conn, "insert into user_information values('$uid', '$upw','$uname','$uemail','$ugender','$unumber');");
       echo "<script>
               alert('회원가입 성공');
-              window.location.href = 'index.html';
+              window.location.href = 'login.html';
             </script>";
       //TODO: 아이디 다시 입력해야되는데 회원가입햇다함
     }catch(Exception $e){

@@ -1,3 +1,33 @@
+<?php
+    $id = $_GET['id'];
+    include("db_conn.php");
+
+    // mysqli_query($conn, "insert into goods values
+    //      (1, '[러버랩] 고무장갑 팔목라인',           2000,  null,  1, 0, 0), 
+    //      (2, '[지구샵] 대나무칫솔 (10개입)',         24900, 38000, 0, 1, 0) , 
+    //      (3, '[지구샵] 주방비누',                    4900,  null,  0, 0, 1), 
+    //      (4, '[수퍼빈] 잘떼스틱',                    13000, null,  1, 0, 0), 
+    //      (5, '[지구샵] 오리지널 고체 치약 450정입',  35900, 40200, 0, 1, 1), 
+    //      (6, '[지구샵] 천연물방울수세미(3개입)',     9900,  12000, 0, 1, 1), 
+    //      (7, '[탄소창고] 손편한 앞접시 세트(5개입)', 15000, null,  1, 0, 0), 
+    //      (8, '[곡물집] 로스티드 그레인 파우더',      3000,  null,  1, 0, 1),
+    //      (9, '[빌리스벳] 프로바이오틱스 원 395',     29000, null,  1, 0, 0)        
+    //      ;");
+
+    // $query = "select * from goods where id='1'";
+    // $arr = mysqli_query($conn, $query);
+    // $goods_data_row = mysqli_fetch_row($arr);
+
+    // echo $goods_data_row[1]." ".$goods_data_row[2];
+
+    // $title = $goods_data_row[1];
+    // $price = $goods_data_row[2];
+    // $new = $goods_data_row[3];
+    // $sale = $goods_data_row[4];
+    // $best = $goods_data_row[5];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,8 +45,9 @@
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
     <header>
-        <!--nav-->
+    <!--nav-->
     <!--로고 있는 top nav-->
     <div class="top_nav container mt-2 mt-sm-0 mt-md-0 mt-lg-0">
         <div class="row justify-content-between pt-lg-3 pt-sm-2 me-xxl-4 me-lg-0">
@@ -67,20 +98,22 @@
     <!--//메인 nav-->
     <!--//nav-->
     </header>
+
+
     <!--main-->
     <main>
         <div class="container mt-lg-5 mt-sm-3">
             <div class="row">
               <div class="goods_img text-center col-6">
-                <img class="w-75" src="https://cdn.imweb.me/thumbnail/20220304/9253223ea16e5.jpg" alt="">
+                <img class="w-100 p-4 pt-0" src="https://cdn.imweb.me/thumbnail/20220304/9253223ea16e5.jpg" alt="">
               </div><!--//goods_img-->
-              <div class="goods_info col-6 fs-4">
+              <div class="goods_info col-6 fs-5">
                 <div class="goods_title_info">
                     <p class="goods_title mb-1">[율립] 비건 립밤</p>
                     <p class="goods_price">25,000원</p>
                 </div><!--//goods_title_info-->
                 <hr>
-                <div class="goods_detailed_info fs-5">
+                <div class="goods_detailed_info fs-6">
                     <p class="goods_ex mb-4">생분해 가능함</p>
                     <div class="fs-6">
                         <span class="fw-bold">원산지</span>
@@ -111,10 +144,10 @@
                         <option value="coral">코랄</option>
                         <option value="almostwinter">얼모스트블루</option>
                     </select>
-                    <div class="goods_btns row p-3 mt-4 justify-content-md-center">
-                        <button type="button" class="col-6 h-1 btn btn-success rounded-pill ">구매하기</button>
+                    <div class="goods_btns row p-3 mt-3 justify-content-md-center">
+                        <button type="button" class="col-6 h-1 py-3 btn btn-success rounded-pill ">구매하기</button>
                         <div class="col-1 "></div>
-                        <button type="button" class="col-5 btn btn-outline-secondary rounded-pill">장바구니</button>
+                        <button type="button" class="col-5 btn py-3 btn-outline-secondary rounded-pill">장바구니</button>
                     
                     </div>
                 </div><!--//goods_buy-->

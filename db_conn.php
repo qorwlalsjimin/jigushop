@@ -1,9 +1,9 @@
 <?php
     $conn = mysqli_connect('localhost', 'jigushop', '111111', 'jigushopdb', '3307');
     if($conn){
-        echo "DB connect success";
+        echo "<script>console.log('DB connect success');</script>";
     }
     else{
-        echo "DB connect fail";
+        echo "<script>console.log('DB connect fail');</script>";
     }
 ?>
