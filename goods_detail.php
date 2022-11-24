@@ -14,17 +14,43 @@
     //      (9, '[빌리스벳] 프로바이오틱스 원 395',     29000, null,  1, 0, 0)        
     //      ;");
 
-    // $query = "select * from goods where id='1'";
-    // $arr = mysqli_query($conn, $query);
-    // $goods_data_row = mysqli_fetch_row($arr);
+// mysqli_query($conn, "update goods set benefit = '60' where id = 1;");
+// mysqli_query($conn, "update goods set benefit = '498' where id = 2;");
+// mysqli_query($conn, "update goods set benefit = '98' where id = 3;");
+// mysqli_query($conn, "update goods set benefit = '260' where id = 4;");
+// mysqli_query($conn, "update goods set benefit = '600' where id = 5;");
+// mysqli_query($conn, "update goods set benefit = '198' where id = 6;");
+// mysqli_query($conn, "update goods set benefit = '330' where id = 7;");
+// mysqli_query($conn, "update goods set benefit = '240' where id = 8;");
+// mysqli_query($conn, "update goods set benefit = '580' where id = 9;");
 
-    // echo $goods_data_row[1]." ".$goods_data_row[2];
+// mysqli_query($conn, "update goods set  = ''");
+// mysqli_query($conn, "update goods set  = ''");
+// mysqli_query($conn, "update goods set  = ''");
+// mysqli_query($conn, "update goods set  = ''");
+// mysqli_query($conn, "update goods set  = ''");
+// mysqli_query($conn, "update goods set  = ''");
+// mysqli_query($conn, "update goods set  = ''");
+// mysqli_query($conn, "update goods set  = ''");
+// mysqli_query($conn, "update goods set  = ''");
 
-    // $title = $goods_data_row[1];
-    // $price = $goods_data_row[2];
-    // $new = $goods_data_row[3];
-    // $sale = $goods_data_row[4];
-    // $best = $goods_data_row[5];
+    $query = "select * from goods where id='$id'";
+    $arr = mysqli_query($conn, $query);
+    $goods_data_row = mysqli_fetch_row($arr);
+
+    $title = $goods_data_row[1];
+    $ex = $goods_data_row[2];
+    $origin= $goods_data_row[3];
+    $brand= $goods_data_row[4];
+    $benefit= $goods_data_row[5];
+    $sway= $goods_data_row[6];
+    $sprice = $goods_data_row[7];
+    $isopttion= $goods_data_row[8];
+    $price = $goods_data_row[9];
+    $last_price = $goods_data_row[10];
+    $new =  $goods_data_row[11];
+    $sale = $goods_data_row[12];
+    $best =  $goods_data_row[13];
 
 ?>
 
@@ -107,37 +133,42 @@
               <div class="goods_img text-center col-6">
                 <img class="w-100 p-4 pt-0" src="https://cdn.imweb.me/thumbnail/20220304/9253223ea16e5.jpg" alt="">
               </div><!--//goods_img-->
-              <div class="goods_info col-6 fs-5">
+              <div class="goods_info col-6 fs-6">
                 <div class="goods_title_info">
-                    <p class="goods_title mb-1">[율립] 비건 립밤</p>
-                    <p class="goods_price">25,000원</p>
+                    <div class="right_icon">
+                        <p class="goods_title mb-1"><?php echo $title ?></p>
+                        <div class="NEWicon my-1 ms-1">NEW</div>
+                        <div class="SALEicon my-1 ms-1">SALE</div>
+                        <div class="BESTicon my-1 ms-1">BEST</div>
+                    </div>
+                    <p class="goods_price text-success"><?php echo $price ?>원</p>
                 </div><!--//goods_title_info-->
                 <hr>
-                <div class="goods_detailed_info fs-6">
-                    <p class="goods_ex mb-4">생분해 가능함</p>
-                    <div class="fs-6">
+                <div class="goods_detailed_info" style="font-size: 0.7em">
+                    <p class="goods_ex mb-4 fs-6"><?php echo $ex ?></p>
+                    <div>
                         <span class="fw-bold">원산지</span>
-                        <span class="origin">대한민국</span>
+                        <span class="origin"><?php echo $origin ?></span>
                     </div>
-                    <div class="fs-6">
+                    <div>
                         <span class="fw-bold">브랜드</span>
-                        <span class="brand">율립</span>
+                        <span class="brand"><?php echo $brand ?></span>
                     </div>    
-                    <div class="fs-6">
+                    <div>
                         <span class="fw-bold">구매혜택</span>
-                        <span class="benefit">500 포인트 적립예정</span>
+                        <span class="benefit"><?php echo $benefit ?> 포인트 적립 예정</span>
                     </div>    
-                    <div class="fs-6">
+                    <div>
                         <span class="fw-bold">배송 방법</span>
-                        <span class="shipping_way">택배</span>
+                        <span class="shipping_way"><?php echo $sway ?></span>
                     </div>    
-                    <div class="fs-6">
+                    <div>
                         <span class="fw-bold">배송비</span>
-                        <span class="shipping_price">3,000원 (50,000원 이상 무료배송) | 도서산간 배송비 추가</span>
+                        <span class="shipping_price"><?php echo $sprice ?> | 도서산간 배송비 추가</span>
                     </div>
                 </div><!--//goods_detailed_info-->
                 <div class="goods_buy mt-3">
-                    <span class="fw-bold fs-6">색상 *</span><br>
+                    <span class="fw-bold" style="font-size: 0.7em">옵션 *</span><br>
                     <select class="form-select goods_select mt-2">
                         <option selected>선택해주세요.</option>
                         <option value="ultimate">얼티밋</option>
