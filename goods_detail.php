@@ -34,6 +34,7 @@
 // mysqli_query($conn, "update goods set  = ''");
 // mysqli_query($conn, "update goods set  = ''");
 
+//상품 상세 정보 데이터 불러오기
     $query = "select * from goods where id='$id'";
     $arr = mysqli_query($conn, $query);
     $goods_data_row = mysqli_fetch_row($arr);
@@ -52,6 +53,13 @@
     $sale = $goods_data_row[12];
     $best =  $goods_data_row[13];
 
+//상품 이미지 불러오기
+    $query = "select * from goods_img where id='$id'";
+    $arr = mysqli_query($conn, $query);
+    $img_data_row = mysqli_fetch_row($arr);
+
+    $img_path = $img_data_row[4];
+    
 ?>
 
 <!DOCTYPE html>
@@ -131,7 +139,7 @@
         <div class="container mt-lg-5 mt-sm-3">
             <div class="row">
               <div class="goods_img text-center col-6">
-                <img class="w-100 p-4 pt-0" src="https://cdn.imweb.me/thumbnail/20220304/9253223ea16e5.jpg" alt="">
+                <img class="w-100 p-4 pt-0" src="<?php echo $img_path; ?>" alt="">
               </div><!--//goods_img-->
               <div class="goods_info col-6 fs-6">
                 <div class="goods_title_info">
