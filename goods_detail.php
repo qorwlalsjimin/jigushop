@@ -145,9 +145,9 @@
                 <div class="goods_title_info">
                     <div class="right_icon">
                         <p class="goods_title mb-1"><?php echo $title ?></p>
-                        <div class="NEWicon my-1 ms-1">NEW</div>
-                        <div class="SALEicon my-1 ms-1">SALE</div>
-                        <div class="BESTicon my-1 ms-1">BEST</div>
+                        <div id="NEWicon" class="NEWicon my-1 ms-1">NEW</div>
+                        <div id="SALEicon" class="SALEicon my-1 ms-1">SALE</div>
+                        <div id="BESTicon" class="BESTicon my-1 ms-1">BEST</div>
                     </div>
                     <p class="goods_price text-success"><?php echo $price ?>원</p>
                 </div><!--//goods_title_info-->
@@ -309,3 +309,24 @@
 </body>
 
 </html>
+
+<?php
+
+//상품이 어떤 키워드를 가지고 있는지
+if(strcmp($new, "1"))
+    echo "<script>
+    let newIcon  = document.getElementById('NEWicon');
+    newIcon.setAttribute('style', 'display:none;');
+    </script>";
+if(strcmp($sale, "1"))
+    echo "<script>
+    let saleIcon  = document.getElementById('SALEicon');
+    saleIcon.setAttribute('style', 'display:none;');
+    </script>";
+if(strcmp($best, "1"))
+    echo "<script>
+    let bestIcon  = document.getElementById('BESTicon');
+    bestIcon.setAttribute('style', 'display:none;');
+    </script>";    
+
+?>
