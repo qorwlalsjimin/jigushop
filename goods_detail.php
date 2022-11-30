@@ -46,12 +46,14 @@
     $benefit= $goods_data_row[5];
     $sway= $goods_data_row[6];
     $sprice = $goods_data_row[7];
-    $isopttion= $goods_data_row[8];
+    $isoption= $goods_data_row[8];
     $price = $goods_data_row[9];
     $last_price = $goods_data_row[10];
     $new =  $goods_data_row[11];
     $sale = $goods_data_row[12];
     $best =  $goods_data_row[13];
+
+    // echo "<script>alert('$isoption');</script>";
 
 //상품 이미지 불러오기
     $query = "select * from goods_img where id='$id'";
@@ -95,7 +97,7 @@
                 <a href="#" class="hidden login"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
                 <a href="login.html" class="sign_in_out"><span class="p-2" id="login">로그인</span></a>
                 <a href="#" class=""><span class="p-2" id="join" onclick="onclickLogout();">회원가입</span></a>
-                <a href="shop_cart.html"><span class="p-2"><i class="fa-solid fa-bag-shopping"></i></span></a>
+                <a href="shop_cart.php"><span class="p-2"><i class="fa-solid fa-bag-shopping"></i></span></a>
                 <a href="#" class="hidden search"><i class="fa-solid fa-magnifying-glass"></i></a>
             </div>
         </div>
@@ -176,19 +178,32 @@
                     </div>
                 </div><!--//goods_detailed_info-->
                 <div class="goods_buy mt-3">
-                    <span class="fw-bold" style="font-size: 0.7em">옵션 *</span><br>
-                    <select class="form-select goods_select mt-2">
-                        <option selected>선택해주세요.</option>
-                        <option value="ultimate">얼티밋</option>
-                        <option value="coral">코랄</option>
-                        <option value="almostwinter">얼모스트블루</option>
-                    </select>
-                    <div class="goods_btns row p-3 mt-3 justify-content-md-center">
-                        <button type="button" class="col-6 h-1 py-3 btn btn-success rounded-pill ">구매하기</button>
-                        <div class="col-1 "></div>
-                        <button type="button" class="col-5 btn py-3 btn-outline-secondary rounded-pill">장바구니</button>
-                    
-                    </div>
+                    <div class="option" id="option">
+                        <span class="fw-bold" style="font-size: 0.7em" id="option">옵션 *</span><br>
+                        <select class="form-select goods_select mt-2" id="option">
+                            <option selected>선택해주세요.</option>
+                            <option value="ultimate">얼티밋</option>
+                            <option value="coral">코랄</option>
+                            <option value="almostwinter">얼모스트블루</option>
+                        </select>
+                    </div><!--//option-->
+                    <div class="count">
+                        <form action="" method="get">
+                            <!--<input class="form-numbers" type="number" maxlength="5" />-->
+                        </form>
+                    </div><!--//count-->
+                        <form action="cart.php" method="get">
+                            <input type="hidden" name="img" value="<?php echo $img_path;?>">
+                            <input type="hidden" name="title" value="<?php echo $title;?>">
+                            <input type="hidden" name="price" value="<?php echo $price;?>">
+
+                            <div class="goods_btns row p-3 mt-3 justify-content-md-center">
+                                <a href="notice.html" class="col-6 h-1 py-3 btn btn-success rounded-pill">구매하기</a>
+                                <a href="shop_cart_db.php?id=<?php echo $id?>&img=<?php echo $img_path;?>&title=<?php echo $title;?>&price=<?php echo $price;?>" class="col-6 btn btn-outline-secondary rounded-pill py-3 h-1">장바구니</a>
+                                <!-- <button type="button" class="col-6 h-1 py-3 btn btn-success rounded-pill ">구매하기</button>
+                                <button type="button" class="col-6 btn py-3 btn-outline-secondary rounded-pill">장바구니</button> -->
+                            </div><!--//goods_btns-->
+                        </form>
                 </div><!--//goods_buy-->
               </div><!--//goods_info-->
             </div><!--//row-->
@@ -329,4 +344,9 @@ if(strcmp($best, "1"))
     bestIcon.setAttribute('style', 'display:none;');
     </script>";    
 
+if(!$isoption)
+echo "<script>
+let option  = document.getElementById('option');
+option.setAttribute('style', 'display:none;');
+</script>"; 
 ?>
