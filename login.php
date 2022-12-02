@@ -1,4 +1,5 @@
 <?php
+    header('Content-Type: application/json');
     include("db_conn.php");
 
     $uid = $_POST['id'];
@@ -36,6 +37,10 @@
                   </script>";
         setcookie("id", $id, time()-1);
         setcookie("pw", $id, time()-1);
+    }
+
+    function test(){
+        echo "<script>alert('햐');</script>";
     }
     
 // echo "<script>

@@ -187,11 +187,19 @@
                             <option value="almostwinter">얼모스트블루</option>
                         </select>
                     </div><!--//option-->
-                    <div class="count">
-                        <form action="" method="get">
-                            <!--<input class="form-numbers" type="number" maxlength="5" />-->
-                        </form>
-                    </div><!--//count-->
+                    <div class="select_block">
+                        <div class="option_title">
+                            옵션 이름
+                        </div><!--//option_title-->
+                        <div class="option_btn">
+                            <div class="option_btn_tool">
+                                <form action="" method="get">
+                                    <a href="javacript:;" onclick></a>
+                                    <input type="number" value="1" min="1" max="999">
+                                </form>
+                            </div><!--//option_btn_tool-->
+                        </div><!--//option_btn-->
+                    </div><!--//select_block-->
                         <form action="cart.php" method="get">
                             <input type="hidden" name="img" value="<?php echo $img_path;?>">
                             <input type="hidden" name="title" value="<?php echo $title;?>">

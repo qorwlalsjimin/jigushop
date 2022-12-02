@@ -537,7 +537,7 @@
 let spanJoin = document.getElementById('join');
 let spanLogin = document.getElementById('login');
 
-//* 쿠키
+//* 쿠키 생성 함수
 //참고한 블로그: https://rjs5967.tistory.com/25
 function getCookie(name) { //가져올 쿠키의 이름을 파라미터 값으로 받고
     var nameOfCookie = name + "="; //쿠키는 "쿠키=값" 형태로 가지고 있어서 뒤에 있는 값을 가져오기 위해 = 포함
@@ -559,6 +559,15 @@ function getCookie(name) { //가져올 쿠키의 이름을 파라미터 값으�
 
     return ""; //빈값 반환
 }
+
+//* 쿠키 삭제 함수
+function deleteCookie(name) {
+    alert('쿠키를 .');
+	document.cookie = "id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+	document.cookie = "pw=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    alert('쿠키를 삭제했습니다.');
+}
+
 
 window.onload=function(){
     if (getCookie('id') != "" && getCookie('pw') != "") {
@@ -588,8 +597,8 @@ function onclickLogout(){
         if(isLogout){
             spanLogin.removeAttribute( 'style' );
             spanJoin.textContent = '회원가입';
-            test();
-            //TODO: 쿠키 삭제
+            alert('으아닛');
+            
         }else{}
     }
 }

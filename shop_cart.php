@@ -1,4 +1,14 @@
 <!--DB의 내용을 불러와 장바구니를 보여주는 화면-->
+<?php
+// DB연동
+include('db_conn.php');
+
+// 장바구니 추가된지 오래된 상품을 위에서부터 출력
+$arr = mysqli_query($conn, "select * from cart order by add_order;");
+
+// 장바구니에 담긴 상품 개수
+$goods_cnt = mysqli_num_rows($arr);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,7 +84,7 @@
             <div class="row">
                 <div class="col align-self-start d-lg-flex">
                     <div class="text me-2 ms-5 h6">장바구니</div>
-                    <span class="b_cnt">&nbsp;2&nbsp;</span>
+                    <span class="b_cnt">&nbsp;<?php echo $goods_cnt;?>&nbsp;</span>
                 </div>
             </div><!--//row-->
         </div><!--//shop-tit-->
@@ -88,9 +98,9 @@
                     <th class="text-center"><small class="text-secondary lead" style="font-size: 0.8em;">수량</small></th>
                     <th class="text-center"><small class="text-secondary lead" style="font-size: 0.8em;">주문금액</small></th>
                 </tr><!--//열 이름-->
+
 <?php
-include('db_conn.php');
-$arr = mysqli_query($conn, "select * from cart");
+//상품 리스트 출력
 for($i = 0; $i<mysqli_num_rows($arr); $i++){
     $row = mysqli_fetch_row($arr);
     echo "
