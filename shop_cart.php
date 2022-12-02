@@ -79,12 +79,12 @@ $goods_cnt = mysqli_num_rows($arr);
         <!--//nav-->
     </header>
     
-    <main>
-        <div class="shop-tit container mt-5 mx-5">
+    <main> 
+        <div class="shop-tit container mt-5 mx-5 px-4">
             <div class="row">
                 <div class="col align-self-start d-lg-flex">
-                    <div class="text me-2 ms-5 h6">장바구니</div>
-                    <span class="b_cnt">&nbsp;<?php echo $goods_cnt;?>&nbsp;</span>
+                    <div class="text me-2 ms-5 h6 ">장바구니</div>
+                    <span class="b_cnt badge bg-secondary text-wrap rounded-circle">&nbsp;<?php echo $goods_cnt;?>&nbsp;</span>
                 </div>
             </div><!--//row-->
         </div><!--//shop-tit-->
