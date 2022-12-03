@@ -88,7 +88,7 @@
     <div class="top_nav container mt-2 mt-sm-0 mt-md-0 mt-lg-0">
         <div class="row justify-content-between pt-lg-3 pt-sm-2 me-xxl-4 me-lg-0">
             <div class="nav_logo col-4 col-xs-1 ps-lg-4">
-                <a href="index.html"><img class="top_nav_logo_img mt-1 pt-md-1 wd-75"
+                <a href="index.php"><img class="top_nav_logo_img mt-1 pt-md-1 wd-75"
                         src="https://cdn.imweb.me/thumbnail/20220504/5fd02ac97337a.png" alt="지구샵"
                         width="158.535211268"></a>
             </div>

@@ -15,9 +15,13 @@
     }
     else{
         if($user_row[1] == $upw){
+            // id 세션에 추가
+            session_start();
+            $_SESSION['user_id'] = $uid;
+            $check = isset($_SESSION['user_id']);
+
             echo "<script>
-                    alert('로그인 성공');
-                    window.location.href = 'index.html';
+                    window.location.href = 'index.php';
                   </script>";
         }
         else{
