@@ -1,5 +1,4 @@
 <?php
-    header('Content-Type: application/json');
     include("db_conn.php");
 
     $uid = $_POST['id'];
@@ -16,8 +15,6 @@
     }
     else{
         if($user_row[1] == $upw){
-            setcookie("id", $uid, time()+3000); //1시간동안
-            setcookie("pw", $upw, time()+3000); //1시간동안
             echo "<script>
                     alert('로그인 성공');
                     window.location.href = 'index.html';
@@ -31,20 +28,4 @@
         }
     }
 
-    function deleteCookie(){
-        echo "<script>
-                    alert(`함수 실행됨`);
-                  </script>";
-        setcookie("id", $id, time()-1);
-        setcookie("pw", $id, time()-1);
-    }
-
-    function test(){
-        echo "<script>alert('햐');</script>";
-    }
-    
-// echo "<script>
-//     alert('로그인 성공');
-//     window.location.href = 'index.html';
-//   </script>";
 ?>

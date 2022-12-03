@@ -31,7 +31,8 @@
                 <a href="login.html" class="sign_in_out"><span class="p-2" id="login">로그인</span></a>
                 <a href="#" class=""><span class="p-2" id="join" onclick="onclickLogout();">회원가입</span></a>
                 <a href="shop_cart.php"><span class="p-2"><i class="fa-solid fa-bag-shopping"></i></span></a>
-                <a href="#" class="hidden search"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="search_result.html?search_word='비누'" class="hidden search"><i class="fa-solid fa-magnifying-glass"></i></a>
+
             </div>
         </div>
     </div>
@@ -55,8 +56,8 @@
             <div class="search_area col-lg-3">
                 <div class="search_type">
                     <form>
-                        <input class="ps-3" type="text" placeholder="Search" style="outline: none;">
-                        <a href="search_result.html"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        <input class="ps-3" id="search_word" type="text" placeholder="Search" onkeypress="enterkey()" style="outline: none;">
+                        <a href="#" onclick="search()"><i class="fa-solid fa-magnifying-glass"></i></a>
                     </form>
                 </div>
                 <!--//search_type-->
@@ -537,48 +538,13 @@
 let spanJoin = document.getElementById('join');
 let spanLogin = document.getElementById('login');
 
-//* 쿠키 생성 함수
-//참고한 블로그: https://rjs5967.tistory.com/25
-function getCookie(name) { //가져올 쿠키의 이름을 파라미터 값으로 받고
-    var nameOfCookie = name + "="; //쿠키는 "쿠키=값" 형태로 가지고 있어서 뒤에 있는 값을 가져오기 위해 = 포함
-    var x = 0;
-
-    while (x <= document.cookie.length) {  //현재 세션에 가지고 있는 쿠키의 총 길이를 가지고 반복
-         var y = (x + nameOfCookie.length); //substring으로 찾아낼 쿠키의 이름 길이 저장
-         if (document.cookie.substring(x, y) == nameOfCookie) { //잘라낸 쿠키와 쿠키의 이름이 같다면
-              if ((endOfCookie = document.cookie.indexOf(";", y)) == -1) //y의 위치로부터 ;값까지 값이 있으면 
-                   endOfCookie = document.cookie.length; //쿠키의 길이로 적용하고
-              return unescape(document.cookie.substring(y, endOfCookie)); //쿠키의 시작점과 끝점을 찾아서 값을 반환
-         }
-
-         x = document.cookie.indexOf(" ", x) + 1; //다음 쿠키를 찾기 위해 시작점을 반환
-         if (x == 0) //쿠키 마지막이면 
-              break; //반복문 빠져나오기
-
-    }
-
-    return ""; //빈값 반환
-}
-
-//* 쿠키 삭제 함수
-function deleteCookie(name) {
-    alert('쿠키를 .');
-	document.cookie = "id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-	document.cookie = "pw=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    alert('쿠키를 삭제했습니다.');
-}
-
-
 window.onload=function(){
-    if (getCookie('id') != "" && getCookie('pw') != "") {
-         //쿠키 있음
-        spanLogin.setAttribute('style', 'display:none;');
-        spanJoin.textContent = '로그아웃';
+
+    //로그인 된 상태일때
         //TODO: 미디어쿼리 버그 생김
-    }
-    else{
-        //쿠키 없음
-    }
+    // spanLogin.setAttribute('style', 'display:none;');
+    // spanJoin.textContent = '로그아웃';
+
 }
 
 function test(){
@@ -587,7 +553,7 @@ function test(){
 })
 }
 
-//* 회원가입 온클릭
+//* 회원가입or로그아웃 온클릭
 function onclickLogout(){
     if(spanJoin.innerText == "회원가입"){
         window.location.href = 'join.html';
@@ -597,9 +563,25 @@ function onclickLogout(){
         if(isLogout){
             spanLogin.removeAttribute( 'style' );
             spanJoin.textContent = '회원가입';
-            alert('으아닛');
-            
         }else{}
     }
+}
+
+//* 엔터 이벤트
+function enterkey(){
+	if (window.event.keyCode == 13) {
+        search();
+    }
+}
+
+//* 검색 화면으로 값과 함께 이동
+function search() {
+    const search_word = document.getElementById('search_word').value;
+    // document.getElementById("search_word").innerText = search_word;
+    if(search_word.length == 0)
+        alert('검색어를 입력해주세요.');
+    else 
+        location.href='search_result.html';
+        // window.location.href = 'search_result.html';
 }
 </script>

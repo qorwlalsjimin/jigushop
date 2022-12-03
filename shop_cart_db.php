@@ -9,9 +9,10 @@
     $title = $_GET['title'];
     $cntItem = 0;
     $price = $_GET['price'];
+    $current_time = date("Y-m-d H:i:s");
 
     //table에 값 insert
-    mysqli_query($conn, "insert into cart values('$id','$title','$img_path','$cntItem','$price');");
+    mysqli_query($conn, "insert into cart values('$id','$title','$img_path','$cntItem','$price','$current_time');");
 
     //장바구니 화면으로 이동
     echo "<script>location.href='shop_cart.php'</script>";
