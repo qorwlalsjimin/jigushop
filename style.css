@@ -595,5 +595,8 @@ main .login_box .widget form .form-check{
 /* //login.html */
 
 /* goods_detail.php */
-
+/* TODO: 밑에 코드 실행되게 */
+.option select option[value=""][disabled] {
+	display: none;
+}
 /* //goods_detail.php */
