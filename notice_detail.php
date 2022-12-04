@@ -107,14 +107,14 @@ $n_content = $notice_row[4];
             <div class="write_body">
                 <div class="row">
                     <input type="text" class="col-lg-3 m-2 p-1" name="n_name" placeholder="이름" value="<?php echo $n_name ?>"
-                        style="border: none; outline: none;">
+                        style="border: none; outline: none;" disabled>
                     <input type="password" class="col-lg-3 m-2" name="n_pw" placeholder="비밀번호" value="<?php echo $n_pw ?>"
-                        style="border: none; outline: none;">
+                        style="border: none; outline: none;" disabled>
                 </div>
                 <!--//row-->
                 <input type="text" class="mb-4" name="n_title" placeholder="제목" value="제목: <?php echo $n_title ?>"
-                    style="border: none; outline: none;">
-                <textarea class="form-control mb-3" rows="8" name="n_content" placeholder="내용을 입력해주세요"><?php echo $n_content ?></textarea>
+                    style="border: none; outline: none;" disabled>
+                <textarea class="form-control mb-3" rows="8" name="n_content" placeholder="내용을 입력해주세요" disabled><?php echo $n_content ?></textarea>
             </div><!--//write_body-->
             
             <div class="row">

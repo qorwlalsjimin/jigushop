@@ -17,7 +17,6 @@
         $user_id = $_SESSION['user_id']; //회원 아이디
     else 
         $user_id = "guest"; 
-    echo "<script>alert('$user_id');</script>";
 
     //table에 값 insert
     mysqli_query($conn, "insert into cart values('$id','$title','$img_path','$cnt_item','$price','$current_time','$user_id');");

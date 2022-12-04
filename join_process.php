@@ -51,7 +51,7 @@
           else{
             echo "<script>
                     alert('회원가입 성공');
-                    // window.location.href = 'login.php';
+                    window.location.href = 'login.php';
                   </script>";
           }
           //TODO: 아이디 다시 입력해야되는데 회원가입햇다함
