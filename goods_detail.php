@@ -1,6 +1,7 @@
 <?php
     $id = $_GET['id'];
     include("db_conn.php");
+    session_start();
 
 //상품 상세 정보 데이터 불러오기
     $query = "select * from goods where id='$id'";
@@ -66,10 +67,27 @@
                 <div
                     class="nav_nav col-4 col-xs-11 col-sm-6 col-md-5 pt-lg-2 pt-md-1 pt-sm-2 mt-lg-0 me-xxl-4 me-lg-1 me-2 pe-lg-0 pe-xl-4 px-0">
                     <a href="#" class="hidden login"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
-                    <a href="login.html" class="sign_in_out"><span class="p-2" id="login">로그인</span></a>
-                    <a href="#" class=""><span class="p-2" id="join" onclick="onclickLogout();">회원가입</span></a>
-                    <a href="shop_cart.php"><span class="p-2"><i class="fa-solid fa-bag-shopping"></i></span></a>
-                    <a href="#" class="hidden search"><i class="fa-solid fa-magnifying-glass"></i></a>
+
+                    <!--로그인되어 있을때-->
+                    <?php
+                        if(isset($_SESSION['user_id'])){
+                    ?>
+                        <a href="#" class=""><span class="p-2" id="join" onclick="logout();">로그아웃</span></a>
+
+                    <!--로그인해야할때-->
+                    <?php
+                        }
+                        else{
+                    ?>
+                        <a href="login.php" class="sign_in_out"><span class="p-2" id="login">로그인</span></a>
+                        <a href="join.php" class=""><span class="p-2" id="join">회원가입</span></a>
+                    <?php
+                        }
+                    ?>
+
+                    <a href="shop_cart.php?user_id=<?php echo $user_id; ?>"><span class="p-2"><i class="fa-solid fa-bag-shopping"></i></span></a>
+                    <!-- <a href="search_result.html?search_word='비누'" class="hidden search"><i class="fa-solid fa-magnifying-glass"></i></a> -->
+
                 </div>
             </div>
         </div>
@@ -82,7 +100,7 @@
                     <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>MADE</span></a>
                     <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>장보기</span></a>
                     <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>지구소개</span></a>
-                    <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>게시판</span></a>
+                    <a class="pe-lg-3 pe-md-1 pe-sm-2" href="notice_board.php"><span>게시판</span></a>
                     <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>콘텐츠</span></a>
                     <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>제안하기</span></a>
                 </div>
@@ -92,9 +110,11 @@
                 </div>
                 <div class="search_area col-lg-3">
                     <div class="search_type">
-                        <form>
-                            <input class="ps-3" type="text" placeholder="Search">
-                            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        <form action='search_result.php'  method="get">
+                            <!-- TODO: enter 이벤트로도 넘어가게 하기 -->
+                            <input name="search_word" class="ps-3" id="search_word" type="text" placeholder="Search" onkeypress="enterkey();" style="outline: none;">
+                            <i class="fa-solid fa-magnifying-glass" onclick="search()"  style="cursor:pointer;"></i>
+                            <!-- <button id="search_btn" type="submit" style="display:none;"></button> -->
                         </form>
                     </div>
                     <!--//search_type-->
@@ -150,7 +170,8 @@
                 </div><!--//goods_detailed_info-->
                 <div class="goods_buy mt-3 pe-3">
                     <?php
-                        if($isoption){
+                        // if($isoption){ //TODO: 옵션 있을때 클릭하면 옵션별로 나누어서 보여줘야함
+                        if(0){
                     ?>
                     <div class="option" id="option">
                         <span class="fw-bold" style="font-size: 0.7em" id="option">옵션 *</span><br>
@@ -174,9 +195,11 @@
                                 <form class="col" action="" method="get">
                                     <input class="w-25" type="number" value="1" min="1" max="999">
                                 </form>
+                                <!--
                                 <span class="col text-end text-muted" style="font-size: 0.9em">
                                     <?php echo "$price"?> 원
                                 </span>
+                                -->
                             </div><!--//option_btn_tool-->
                         </div><!--//option_btn-->
                     </div><!--//select_block-->
@@ -190,31 +213,31 @@
                                     <hr class='px-3 my-2 text-muted'>
                                     <div class='option_btn'>
                                         <div class='option_btn_tool row justify-content-between'>
-                                            <form class='col' action='' method='get'>
-                                                <input class='w-25' type='number' value='1' min='1' max='999'>
-                                            </form>
+                                            <form action='shop_cart_db.php' method='get'> <!--여기서 시작한 form은-->
+                                                <input class='w-25' name='cnt_item' type='number' value='1' min='1' max='999'>
+                                            <!--TODO: 오른쪽으로 붙이기
                                             <span class='col text-end text-muted' style='font-size: 0.9em'>
                                                 $price 원
                                             </span>
+                                            -->
                                         </div><!--//option_btn_tool-->
                                     </div><!--//option_btn-->
                                 </div><!--//select_block-->
                             ";
                     } ?>
 
-
-
-                    <form action="cart.php" method="get">
+                        <input type="hidden" name="id" value="<?php echo $id;?>">
                         <input type="hidden" name="img" value="<?php echo $img_path;?>">
                         <input type="hidden" name="title" value="<?php echo $title;?>">
                         <input type="hidden" name="price" value="<?php echo $price;?>">
+
                         <div class="goods_btns row p-3 mt-3 justify-content-between">
                             <a href="notice.html" class="col h-1 py-3 btn btn-success rounded-pill">구매하기</a>
-                            <a href="shop_cart_db.php?id=<?php echo $id?>&img=<?php echo $img_path;?>&title=<?php echo $title;?>&price=<?php echo $price;?>" class="col btn btn-outline-secondary rounded-pill py-3 h-1">장바구니</a>
+                            <button type="submit" class="col btn btn-outline-secondary rounded-pill py-3 h-1">장바구니</button>
                             <!-- <button type="button" class="col-6 h-1 py-3 btn btn-success rounded-pill ">구매하기</button>
                             <button type="button" class="col-6 btn py-3 btn-outline-secondary rounded-pill">장바구니</button> -->
                         </div><!--//goods_btns-->
-                    </form>
+                    </form><!--//여기서 닫힙니다-->
                 </div><!--//goods_buy-->
               </div><!--//goods_info-->
             </div><!--//row-->
@@ -355,3 +378,11 @@ if(strcmp($best, "1"))
     bestIcon.setAttribute('style', 'display:none;');
     </script>";    
 ?>
+
+<script>
+function logout(){
+    if(confirm('로그아웃하시겠습니까?')){
+        location.href='logout.php';
+    }
+}
+</script>

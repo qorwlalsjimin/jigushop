@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,72 +89,68 @@
         <!--//nav-->
     </header>
 
+    <hr>
+
     <main>
-        <div class="login_box container">
-            <div class="img_box w-75">
-                <img class="w-25" src="https://cdn.imweb.me/thumbnail/20200516/bd6d0ab83943e.jpg">
-            </div>
-            <!--img_box-->
-            <div class="widget">
-                <form action="login_process.php" method="post">
-                    <div class="naver">
-                        <button type="button" class="btn_naver btn btn-outline-success mb-3 w-50" onclick="window.location.href = 'notice.html'">네이버로 시작하기</button>
-                    </div>
-                    <div class="mb-2">
-                        <input type="text" class="form-control w-50" id="id" name="id" placeholder="아이디">
-                    </div>
-                    <div class="mb-1">
-                        <input type="password" class="form-control w-50" id="pass" name="pass" placeholder="비밀번호">
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">로그인상태유지
-                    </div>
-                    <button type="submit" class="btn btn-success w-50">로그인</button>
-                    <div id="loginHelp" class="loginHelp w-50 mb-5">
-                        <a class="float-start" href="join.php">회원가입</a>
-                        <a class="float-end" href="#"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">아이디 · 비밀번호 찾기</a>
-                    </div>
+        <div class="join container ">
+            <!-- 공란 체크 참고 블로그: https://cho-coding.tistory.com/49 -->
+            <form class="w-100" method="post" action="join_process.php">
+                <div class="mt-5 mb-1 row justify-content-lg-center">
+                    <div class="mb-3 col-sm-12 col-lg-6 row">
+                        <div class="info_secret mb-1">
+                            <div class="name mb-4">
+                                <label class="form-label">아이디<i class="ms-1 fa-solid fa-circle-dot" style="color: skyblue;"></i></label>
+                                <input type="text" class="form-control mb-4" id="id" name="id" placeholder="아이디">
+                            </div><!--//id-->
 
-                    <!--모달해보쟈-->
+                            <div class="name mb-4">
+                                <label class="form-label">비밀번호<i class="ms-1 fa-solid fa-circle-dot" style="color: skyblue;"></i></label>
+                                <input type="password" class="form-control mb-1" id="pw" name="pw" data-name="비밀번호" placeholder="문자, 숫자, 특수 문자가 들어간 최소 8자 비밀번호를 만들어주세요">
+                                <input type="password" class="form-control" id="pwcheck" name="pwcheck" data-name="비밀번호 확인" placeholder="비밀번호 확인">                            
+                            </div><!--//pass-->
+                        </div><!--//info_secret-->
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                      <div class="modal-dialog  modal-dialog-centered">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">아이디 찾기</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <form>
-                              <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Recipient:</label>
-                                <input type="text" class="form-control" id="recipient-name">
-                              </div>
-                              <div class="mb-3">
-                                <label for="message-text" class="col-form-label">Message:</label>
-                                <textarea class="form-control" id="message-text"></textarea>
-                              </div>
-                            </form>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-success col-12">아이디 찾기</button>
-                          </div>
+                        <div class="info_basic">
+                            <div class="name mb-4">
+                                <label class="form-label">이름<i class="ms-1 fa-solid fa-circle-dot" style="color: skyblue;"></i></label>
+                                <input type="text" class="form-control" id="name" name="name" data-name="이름" placeholder="이름을(를) 입력하세요">
+                            </div><!--//name-->
+
+                            <div class="name mb-4">
+                                <label class="form-label">이메일<i class="ms-1 fa-solid fa-circle-dot" style="color: skyblue;"></i></label>
+                                <input type="email" class="form-control mb-4" id="email" name="email" data-name="이메일" aria-describedby="emailHelp" placeholder="이메일">
+                            </div><!--//email-->
+
+                            <div class="gender mb-4">
+                                <label class="form-label">성별</label>
+                                
+                                <div>
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        <input class="form-check-input" type="radio" name="gender" value="male" checked>
+                                          남자
+                                    </label><br>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        <input class="form-check-input" type="radio" name="gender" value="female">
+                                          여자
+                                    </label>
+                                </div>
+
+                            </div><!--//gender-->
+                            <div class="number mb-4">
+                                <label class="form-label">연락처</label>
+                                <input type="tel" class="form-control" id="number" name="number" placeholder="연락처">
+                            </div><!--//name-->
+                        </div><!--//info_basic-->
+                        <div class="btn">
+                            <div class="btn_join d-grid">
+                                <button type="submit" class="btn btn-success">가입하기</button>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                    <!--끗-->
-
-                    <!--over_h-->
-                    <div class="loginHelp w-50">
-                        <hr>
-                    </div>
-                    <button type="button" class="btn btn-secondary mt-3 w-50" onclick="window.location.href = 'notice.html'">비회원 주문배송 조회</button>
-                </form>
-            </div>
-            <!--//widget-->
+                </div>
+            </form>
         </div>
-        <!--//container-->
+        <!--//join container-->
     </main>
 
 

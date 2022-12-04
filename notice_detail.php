@@ -1,5 +1,7 @@
 <!-- 게시판입니다 -->
 <?php
+session_start();
+
 include('db_conn.php');
 $n_no = $_GET['n_no'];
 $arr = mysqli_query($conn, "select * from notice_board where n_no=$n_no");
@@ -40,10 +42,27 @@ $n_content = $notice_row[4];
                 <div
                     class="nav_nav col-4 col-xs-11 col-sm-6 col-md-5 pt-lg-2 pt-md-1 pt-sm-2 mt-lg-0 me-xxl-4 me-lg-1 me-2 pe-lg-0 pe-xl-4 px-0">
                     <a href="#" class="hidden login"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
-                    <a href="login.html" class="sign_in_out"><span class="p-2" id="login">로그인</span></a>
-                    <a href="#" class=""><span class="p-2" id="join" onclick="onclickLogout();">회원가입</span></a>
-                    <a href="shop_cart.php"><span class="p-2"><i class="fa-solid fa-bag-shopping"></i></span></a>
-                    <a href="#" class="hidden search"><i class="fa-solid fa-magnifying-glass"></i></a>
+
+                    <!--로그인되어 있을때-->
+                    <?php
+                        if(isset($_SESSION['user_id'])){
+                    ?>
+                        <a href="#" class=""><span class="p-2" id="join" onclick="logout();">로그아웃</span></a>
+
+                    <!--로그인해야할때-->
+                    <?php
+                        }
+                        else{
+                    ?>
+                        <a href="login.php" class="sign_in_out"><span class="p-2" id="login">로그인</span></a>
+                        <a href="join.php" class=""><span class="p-2" id="join">회원가입</span></a>
+                    <?php
+                        }
+                    ?>
+
+                    <a href="shop_cart.php?user_id=<?php echo $user_id; ?>"><span class="p-2"><i class="fa-solid fa-bag-shopping"></i></span></a>
+                    <!-- <a href="search_result.html?search_word='비누'" class="hidden search"><i class="fa-solid fa-magnifying-glass"></i></a> -->
+
                 </div>
             </div>
         </div>
@@ -56,7 +75,7 @@ $n_content = $notice_row[4];
                     <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>MADE</span></a>
                     <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>장보기</span></a>
                     <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>지구소개</span></a>
-                    <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>게시판</span></a>
+                    <a class="pe-lg-3 pe-md-1 pe-sm-2" href="notice_board.php"><span>게시판</span></a>
                     <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>콘텐츠</span></a>
                     <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>제안하기</span></a>
                 </div>
@@ -66,9 +85,11 @@ $n_content = $notice_row[4];
                 </div>
                 <div class="search_area col-lg-3">
                     <div class="search_type">
-                        <form>
-                            <input class="ps-3" type="text" placeholder="Search" style="outline: none;">
-                            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        <form action='search_result.php'  method="get">
+                            <!-- TODO: enter 이벤트로도 넘어가게 하기 -->
+                            <input name="search_word" class="ps-3" id="search_word" type="text" placeholder="Search" onkeypress="enterkey();" style="outline: none;">
+                            <i class="fa-solid fa-magnifying-glass" onclick="search()"  style="cursor:pointer;"></i>
+                            <!-- <button id="search_btn" type="submit" style="display:none;"></button> -->
                         </form>
                     </div>
                     <!--//search_type-->
@@ -214,3 +235,11 @@ $n_content = $notice_row[4];
 </body>
 
 </html>
+
+<script>
+function logout(){
+    if(confirm('로그아웃하시겠습니까?')){
+        location.href='logout.php';
+    }
+}
+</script>

@@ -26,74 +26,74 @@ else
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <header>
         <!--nav-->
-    <!--로고 있는 top nav-->
-    <div class="top_nav container mt-2 mt-sm-0 mt-md-0 mt-lg-0">
-        <div class="row justify-content-between pt-lg-3 pt-sm-2 me-xxl-4 me-lg-0">
-            <div class="nav_logo col-4 col-xs-1 ps-lg-4">
-                <a href="index.php"><img class="top_nav_logo_img mt-1 pt-md-1 wd-75"
-                        src="https://cdn.imweb.me/thumbnail/20220504/5fd02ac97337a.png" alt="지구샵"
-                        width="158.535211268"></a>
-            </div>
-            <div
-                class="nav_nav col-4 col-xs-11 col-sm-6 col-md-5 pt-lg-2 pt-md-1 pt-sm-2 mt-lg-0 me-xxl-4 me-lg-1 me-2 pe-lg-0 pe-xl-4 px-0">
-                <a href="#" class="hidden login"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
-
-                <!--로그인되어 있을때-->
-                <?php
-                    if(isset($_SESSION['user_id'])){
-                ?>
-                    <a href="#" class=""><span class="p-2" id="join" onclick="logout();">로그아웃</span></a>
-
-                <!--로그인해야할때-->
-                <?php
-                    }
-                    else{
-                ?>
-                    <a href="login.html" class="sign_in_out"><span class="p-2" id="login">로그인</span></a>
-                    <a href="join.html" class=""><span class="p-2" id="join">회원가입</span></a>
-                <?php
-                    }
-                ?>
-
-                <a href="shop_cart.php?user_id=<?php echo $user_id; ?>"><span class="p-2"><i class="fa-solid fa-bag-shopping"></i></span></a>
-                <!-- <a href="search_result.html?search_word='비누'" class="hidden search"><i class="fa-solid fa-magnifying-glass"></i></a> -->
-
-            </div>
-        </div>
-    </div>
-    <!--//로고 있는 top nav-->
-
-    <!--메인 nav-->
-    <nav class="main_nav container mt-4 mb-3">
-        <div class="row">
-            <div class="left_nav col-lg-6 ms-lg-3 ms-md-0 ms-1 ms-sm-0 ms-md-0 ms-lg-0">
-                <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>MADE</span></a>
-                <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>장보기</span></a>
-                <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>지구소개</span></a>
-                <a class="pe-lg-3 pe-md-1 pe-sm-2" href="notice_board.php"><span>게시판</span></a>
-                <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>콘텐츠</span></a>
-                <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>제안하기</span></a>
-            </div>
-            <div class="right_nav col-lg-3 pt-1">
-                <a href="#" class="pe-2"><span>기획전</span></a>
-                <a href="#"><span>커뮤니티</span></a>
-            </div>
-            <div class="search_area col-lg-3">
-                <div class="search_type">
-                    <form action='search_result.php'  method="get">
-                        <!-- TODO: enter 이벤트로도 넘어가게 하기 -->
-                        <input name="search_word" class="ps-3" id="search_word" type="text" placeholder="Search" onkeypress="enterkey();" style="outline: none;">
-                        <i class="fa-solid fa-magnifying-glass" onclick="search()"  style="cursor:pointer;"></i>
-                        <!-- <button id="search_btn" type="submit" style="display:none;"></button> -->
-                    </form>
+        <!--로고 있는 top nav-->
+        <div class="top_nav container mt-2 mt-sm-0 mt-md-0 mt-lg-0">
+            <div class="row justify-content-between pt-lg-3 pt-sm-2 me-xxl-4 me-lg-0">
+                <div class="nav_logo col-4 col-xs-1 ps-lg-4">
+                    <a href="index.php"><img class="top_nav_logo_img mt-1 pt-md-1 wd-75"
+                            src="https://cdn.imweb.me/thumbnail/20220504/5fd02ac97337a.png" alt="지구샵"
+                            width="158.535211268"></a>
                 </div>
-                <!--//search_type-->
+                <div
+                    class="nav_nav col-4 col-xs-11 col-sm-6 col-md-5 pt-lg-2 pt-md-1 pt-sm-2 mt-lg-0 me-xxl-4 me-lg-1 me-2 pe-lg-0 pe-xl-4 px-0">
+                    <a href="#" class="hidden login"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+
+                    <!--로그인되어 있을때-->
+                    <?php
+                        if(isset($_SESSION['user_id'])){
+                    ?>
+                        <a href="#" class=""><span class="p-2" id="join" onclick="logout();">로그아웃</span></a>
+
+                    <!--로그인해야할때-->
+                    <?php
+                        }
+                        else{
+                    ?>
+                        <a href="login.php" class="sign_in_out"><span class="p-2" id="login">로그인</span></a>
+                        <a href="join.php" class=""><span class="p-2" id="join">회원가입</span></a>
+                    <?php
+                        }
+                    ?>
+
+                    <a href="shop_cart.php?user_id=<?php echo $user_id; ?>"><span class="p-2"><i class="fa-solid fa-bag-shopping"></i></span></a>
+                    <!-- <a href="search_result.html?search_word='비누'" class="hidden search"><i class="fa-solid fa-magnifying-glass"></i></a> -->
+
+                </div>
             </div>
-            <!--//search_area-->
         </div>
-    </nav>
-    <!--//메인 nav-->
-    <!--//nav-->
+        <!--//로고 있는 top nav-->
+
+        <!--메인 nav-->
+        <nav class="main_nav container mt-4 mb-3">
+            <div class="row">
+                <div class="left_nav col-lg-6 ms-lg-3 ms-md-0 ms-1 ms-sm-0 ms-md-0 ms-lg-0">
+                    <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>MADE</span></a>
+                    <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>장보기</span></a>
+                    <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>지구소개</span></a>
+                    <a class="pe-lg-3 pe-md-1 pe-sm-2" href="notice_board.php"><span>게시판</span></a>
+                    <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>콘텐츠</span></a>
+                    <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>제안하기</span></a>
+                </div>
+                <div class="right_nav col-lg-3 pt-1">
+                    <a href="#" class="pe-2"><span>기획전</span></a>
+                    <a href="#"><span>커뮤니티</span></a>
+                </div>
+                <div class="search_area col-lg-3">
+                    <div class="search_type">
+                        <form action='search_result.php'  method="get">
+                            <!-- TODO: enter 이벤트로도 넘어가게 하기 -->
+                            <input name="search_word" class="ps-3" id="search_word" type="text" placeholder="Search" onkeypress="enterkey();" style="outline: none;">
+                            <i class="fa-solid fa-magnifying-glass" onclick="search()"  style="cursor:pointer;"></i>
+                            <!-- <button id="search_btn" type="submit" style="display:none;"></button> -->
+                        </form>
+                    </div>
+                    <!--//search_type-->
+                </div>
+                <!--//search_area-->
+            </div>
+        </nav>
+        <!--//메인 nav-->
+        <!--//nav-->
     </header>
     <!--main-->
     <main>
