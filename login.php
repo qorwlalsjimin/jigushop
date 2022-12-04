@@ -3,7 +3,7 @@
 
     $uid = $_POST['id'];
     $upw = $_POST['pass'];
-    
+
     $arr = mysqli_query($conn, "select * from user_information where id='$uid';");
     $user_row = mysqli_fetch_row($arr);
 
@@ -26,9 +26,15 @@
                   </script>";
                 
         }
-        else{
+        else if($user_row[1] != $upw && strlen($upw)!=0){
             echo "<script>
                     alert(`비밀번호를 다시 확인하세요`);
+                    history.back();
+                  </script>";
+        }
+        else{
+            echo "<script>
+                    alert(`빈칸을 입력해주세요`);
                     history.back();
                   </script>";
         }

@@ -15,12 +15,14 @@
     $sway= $goods_data_row[6];
     $sprice = $goods_data_row[7];
     $isoption= $goods_data_row[8];
-    $price = $goods_data_row[9];
+    $price = substr_replace($goods_data_row[9],',',strlen($goods_data_row[9])-3,0); //쉼표 넣은 값
     $last_price = $goods_data_row[10];
     $new =  $goods_data_row[11];
     $sale = $goods_data_row[12];
     $best =  $goods_data_row[13];
     $img_path = $goods_data_row[14];
+
+    
 
 //상품 옵션 정보 있으면 데이터 불러오기
     if($isoption){
@@ -152,7 +154,7 @@
                     ?>
                     <div class="option" id="option">
                         <span class="fw-bold" style="font-size: 0.7em" id="option">옵션 *</span><br>
-                        <select class="form-select goods_select mt-2" id="option">
+                        <select class="form-select goods_select mt-2" id="option" onchange="add_option()">
                             <option selected disabled>선택해주세요.</option>
                             <?php
                                 for($i = 0; $i<sizeof($options_value); $i++)
@@ -160,13 +162,10 @@
                             ?>
                         </select>
                     </div><!--//option-->
-                    <?php
-                        }
-                    ?>
 
                     <div class="select_block my-3 p-3 bg-secondary bg-opacity-10 rounded">
                         <div class="option_title row justify-content-between">
-                            <span class="col text-muted" style="font-size: 0.9em">옵션 이름</span>
+                            <span class="col text-muted" style="font-size: 0.9em">선택한 옵션 이름</span>
                             <i class="fa-solid fa-xmark col lh-base text-muted text-end pe-3"></i>
                         </div><!--//option_title-->
                         <hr class="px-3 my-2 text-muted">
@@ -176,11 +175,35 @@
                                     <input class="w-25" type="number" value="1" min="1" max="999">
                                 </form>
                                 <span class="col text-end text-muted" style="font-size: 0.9em">
-                                    25,000원
+                                    <?php echo "$price"?> 원
                                 </span>
                             </div><!--//option_btn_tool-->
                         </div><!--//option_btn-->
                     </div><!--//select_block-->
+                    <?php
+                        }else{
+                            echo "
+                                <div class='select_block my-3 mt-5 p-3 bg-secondary bg-opacity-10 rounded'>
+                                    <div class='option_title row justify-content-between'>
+                                        <span class='col text-muted' style='font-size: 0.9em'>수량</span>
+                                    </div><!--//option_title-->
+                                    <hr class='px-3 my-2 text-muted'>
+                                    <div class='option_btn'>
+                                        <div class='option_btn_tool row justify-content-between'>
+                                            <form class='col' action='' method='get'>
+                                                <input class='w-25' type='number' value='1' min='1' max='999'>
+                                            </form>
+                                            <span class='col text-end text-muted' style='font-size: 0.9em'>
+                                                $price 원
+                                            </span>
+                                        </div><!--//option_btn_tool-->
+                                    </div><!--//option_btn-->
+                                </div><!--//select_block-->
+                            ";
+                    } ?>
+
+
+
                     <form action="cart.php" method="get">
                         <input type="hidden" name="img" value="<?php echo $img_path;?>">
                         <input type="hidden" name="title" value="<?php echo $title;?>">
