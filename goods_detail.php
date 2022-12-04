@@ -140,11 +140,11 @@
     <main>
         <div class="container mt-lg-5 mt-sm-3">
             <div class="row">
-              <div class="goods_img text-center col-6">
-                <img class="w-100 p-4 pt-0" src="<?php echo $img_path; ?>" alt="">
+              <div class="goods_img text-center col-7 p-3 pt-0 ps-0">
+                <img class="w-100 p-5 pt-0 ps-3" src="<?php echo $img_path; ?>" alt="">
               </div><!--//goods_img-->
-              <div class="goods_info col-6 fs-6">
-                <div class="goods_title_info">
+              <div class="goods_info col-5 fs-6 pe-5">
+                <div class="goods_title_info pe-5">
                     <div class="right_icon">
                         <p class="goods_title mb-1"><?php echo $title ?></p>
                         <div id="NEWicon" class="NEWicon my-1 ms-1">NEW</div>
@@ -153,9 +153,9 @@
                     </div>
                     <p class="goods_price text-success"><?php echo $price ?>원</p>
                 </div><!--//goods_title_info-->
-                <hr>
-                <div class="goods_detailed_info" style="font-size: 0.7em">
-                    <p class="goods_ex mb-4 fs-6"><?php echo $ex ?></p>
+                <hr class="me-3">
+                <div class="goods_detailed_info pe-3" style="font-size: 0.7em">
+                    <p class="goods_ex mb-4 text-muted" style="font-size: 1.2em"><?php echo $ex ?></p>
                     <div>
                         <span class="fw-bold">원산지</span>
                         <span class="origin"><?php echo $origin ?></span>
@@ -177,7 +177,7 @@
                         <span class="shipping_price"><?php echo $sprice ?> | 도서산간 배송비 추가</span>
                     </div>
                 </div><!--//goods_detailed_info-->
-                <div class="goods_buy mt-3">
+                <div class="goods_buy mt-3 pe-3">
                     <div class="option" id="option">
                         <span class="fw-bold" style="font-size: 0.7em" id="option">옵션 *</span><br>
                         <select class="form-select goods_select mt-2" id="option">
@@ -187,31 +187,34 @@
                             <option value="almostwinter">얼모스트블루</option>
                         </select>
                     </div><!--//option-->
-                    <div class="select_block">
-                        <div class="option_title">
-                            옵션 이름
+                    <div class="select_block my-3 p-3 bg-secondary bg-opacity-10 rounded">
+                        <div class="option_title row justify-content-between">
+                            <span class="col text-muted" style="font-size: 0.9em">옵션 이름</span>
+                            <i class="fa-solid fa-xmark col lh-base text-muted text-end pe-3"></i>
                         </div><!--//option_title-->
+                        <hr class="px-3 my-2 text-muted">
                         <div class="option_btn">
-                            <div class="option_btn_tool">
-                                <form action="" method="get">
-                                    <a href="javacript:;" onclick></a>
-                                    <input type="number" value="1" min="1" max="999">
+                            <div class="option_btn_tool row justify-content-between">
+                                <form class="col" action="" method="get">
+                                    <input class="w-25" type="number" value="1" min="1" max="999">
                                 </form>
+                                <span class="col text-end text-muted" style="font-size: 0.9em">
+                                    25,000원
+                                </span>
                             </div><!--//option_btn_tool-->
                         </div><!--//option_btn-->
                     </div><!--//select_block-->
-                        <form action="cart.php" method="get">
-                            <input type="hidden" name="img" value="<?php echo $img_path;?>">
-                            <input type="hidden" name="title" value="<?php echo $title;?>">
-                            <input type="hidden" name="price" value="<?php echo $price;?>">
-
-                            <div class="goods_btns row p-3 mt-3 justify-content-md-center">
-                                <a href="notice.html" class="col-6 h-1 py-3 btn btn-success rounded-pill">구매하기</a>
-                                <a href="shop_cart_db.php?id=<?php echo $id?>&img=<?php echo $img_path;?>&title=<?php echo $title;?>&price=<?php echo $price;?>" class="col-6 btn btn-outline-secondary rounded-pill py-3 h-1">장바구니</a>
-                                <!-- <button type="button" class="col-6 h-1 py-3 btn btn-success rounded-pill ">구매하기</button>
-                                <button type="button" class="col-6 btn py-3 btn-outline-secondary rounded-pill">장바구니</button> -->
-                            </div><!--//goods_btns-->
-                        </form>
+                    <form action="cart.php" method="get">
+                        <input type="hidden" name="img" value="<?php echo $img_path;?>">
+                        <input type="hidden" name="title" value="<?php echo $title;?>">
+                        <input type="hidden" name="price" value="<?php echo $price;?>">
+                        <div class="goods_btns row p-3 mt-3 justify-content-between">
+                            <a href="notice.html" class="col h-1 py-3 btn btn-success rounded-pill">구매하기</a>
+                            <a href="shop_cart_db.php?id=<?php echo $id?>&img=<?php echo $img_path;?>&title=<?php echo $title;?>&price=<?php echo $price;?>" class="col btn btn-outline-secondary rounded-pill py-3 h-1">장바구니</a>
+                            <!-- <button type="button" class="col-6 h-1 py-3 btn btn-success rounded-pill ">구매하기</button>
+                            <button type="button" class="col-6 btn py-3 btn-outline-secondary rounded-pill">장바구니</button> -->
+                        </div><!--//goods_btns-->
+                    </form>
                 </div><!--//goods_buy-->
               </div><!--//goods_info-->
             </div><!--//row-->

@@ -11,10 +11,18 @@
 
     try{
       mysqli_query($conn, "insert into user_information values('$uid', '$upw','$uname','$uemail','$ugender','$unumber');");
-      echo "<script>
-              alert('회원가입 성공');
-              window.location.href = 'login.html';
-            </script>";
+      if($upw != $upwchk){
+        echo "<script>
+          alert('비밀번호가 다릅니다.');
+          history.back();
+        </script>";
+      }
+      else{
+        echo "<script>
+                alert('회원가입 성공');
+                window.location.href = 'login.html';
+              </script>";
+      }
       //TODO: 아이디 다시 입력해야되는데 회원가입햇다함
     }catch(Exception $e){
       if(strpos($e, "PRIMARY")) echo "<script>

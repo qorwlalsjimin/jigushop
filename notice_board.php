@@ -1,20 +1,8 @@
-<!--DB의 내용을 불러와 장바구니를 보여주는 화면-->
+<!-- 게시판입니다 -->
 <?php
-// DB연동
 include('db_conn.php');
-
-// 사용자 아이디 받아오기
-$user_id = $_GET['user_id'];
-
-// 장바구니 추가된지 오래된 상품을 위에서부터 출력
-$arr = mysqli_query($conn, "select * from cart where user_id='$user_id' order by add_order");
-
-// 장바구니에 담긴 상품 개수
-$goods_cnt = mysqli_num_rows($arr);
-
-// TODO: 회원마다 장바구니를 가지고 있어야함
-// $user_id = 
-
+$n_no = 1;
+$arr = mysqli_query($conn, 'select * from notice_board order by n_no desc');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,62 +75,38 @@ $goods_cnt = mysqli_num_rows($arr);
     </header>
     
     <main> 
-        <div class="shop-tit container mt-5 mx-5 px-4">
-            <div class="row">
-                <div class="col align-self-start d-lg-flex">
-                    <div class="text me-2 ms-5 h6 ">장바구니</div>
-                    <span class="b_cnt badge bg-secondary text-wrap rounded-circle lh-base">&nbsp;<?php echo $goods_cnt;?>&nbsp;</span>
-                </div>
-            </div><!--//row-->
+        <div class="container text-center mt-5 mx-5 px-4">
+            <p class="col align-self-center">문의하기</p>
         </div><!--//shop-tit-->
         
-        <table class="table container align-middle">
+        <div class="notice_list container ">
+            <table class="table">
                 <tr><!--열 이름-->
-                    <th>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                        <small class="text-secondary lead" style="font-size: 0.8em;">상품 정보</small>
-                    </th>
-                    <th class="text-center"><small class="text-secondary lead" style="font-size: 0.8em;">수량</small></th>
-                    <th class="text-center"><small class="text-secondary lead" style="font-size: 0.8em;">주문금액</small></th>
+                    <th class=""><small class="text-secondary lead" style="font-size: 0.8em;">NO</small></th>
+                    <th class="text-center" style="width:40em"><small class="text-secondary lead" style="font-size: 0.8em;">제목</small></th>
+                    <th class=""><small class="text-secondary lead" style="font-size: 0.8em;">글쓴이</small></th>
+                    <th class=""><small class="text-secondary lead" style="font-size: 0.8em;">작성시간</small></th>
                 </tr><!--//열 이름-->
+                <?php
+                    for($i = 0; $i<mysqli_num_rows($arr); $i++){
+                        $notice_row = mysqli_fetch_row($arr);
+                        echo "
+                            <tr>
+                                <td>$n_no</td>
+                                <td><a href='notice_detail.php?n_no=$notice_row[0]' class='text-decoration-none' style='color: black;'>$notice_row[3]</a></td>
+                                <td>$notice_row[1]</td>
+                                <td>$notice_row[5]</td>
+                            </tr>
+                        ";
+                        $n_no += 1;
+                    }
+                ?>
+            </table>
+            <div class="row">
+                <a class="col text-end text-decoration-none" href="notice_write.html"><span class="me-5">글쓰기</span></a>
+            </div>
+        </div>
 
-<?php
-//상품 리스트 출력
-for($i = 0; $i<mysqli_num_rows($arr); $i++){
-    $row = mysqli_fetch_row($arr);
-    echo "
-                <tr>
-                    <td class='d-flex py-3'>
-                        <div class='checkItem me-3'>
-                            <input class='form-check-input' type='checkbox' value='' id='flexCheckChecked' checked>
-                        </div>
-                        <img class='ps-1 pe-4' src='$row[2]' alt='cart item' style='width: 15%;'>
-                        <p><a href='#' class='text-decoration-none'><small class='text-secondary' style='font-size: 0.9em;'>$row[1]</small></a></p>
-                    </td>
-                    <td class='py-3 text-center'>
-                        <div class='cntItem text-secondary'>$row[3]</div>
-                        <div class='changeItem_div mt-1'>
-                            <a class='btn_changeItem text-decoration-none bg-secondary text-white rounded p-1 lead' style='font-size: 0.7em;' href='#'>옵션/수량 변경</a>
-                        </div>
-                    </td>
-                    <td class='py-3 text-center'>
-                        <span class='price_text text-secondary h6' style='font-weight: bolder;'>$row[4]</span>
-                        <div class='directBuy_div mt-1'>
-                            <a class='btn_directBuy_div text-decoration-none bg-success text-white rounded p-1 lead' style='font-size: 0.7em;' href='#'>바로구매</a>
-                        </div>
-                    </td>
-                </tr>
-    ";
-}
-?>
-
-                        <!-- 
-                            //상품 없을때
-                        <i class='fa-solid fa-cart-shopping text-secondary'></i>
-                        <div class='cart_message lead'><small class='text-secondary'>장바구니가 비어있습니다.</small> </div> 
-                        -->
-                <caption class="text-center"><a class="text-success" href="index.php">계속 쇼핑하기</a></caption>
-        </table>
     </main>
     
 

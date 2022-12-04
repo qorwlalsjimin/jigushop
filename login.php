@@ -3,7 +3,7 @@
 
     $uid = $_POST['id'];
     $upw = $_POST['pass'];
-
+    
     $arr = mysqli_query($conn, "select * from user_information where id='$uid';");
     $user_row = mysqli_fetch_row($arr);
 
@@ -22,7 +22,9 @@
 
             echo "<script>
                     window.location.href = 'index.php';
+                    alert('".$_SESSION['user_id']."님 환영합니다');
                   </script>";
+                
         }
         else{
             echo "<script>

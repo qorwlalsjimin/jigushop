@@ -1,3 +1,15 @@
+<!-- 게시판입니다 -->
+<?php
+include('db_conn.php');
+$n_no = $_GET['n_no'];
+$arr = mysqli_query($conn, "select * from notice_board where n_no=$n_no");
+$notice_row = mysqli_fetch_row($arr);
+
+$n_name = $notice_row[1];
+$n_pw = $notice_row[2];
+$n_title = $notice_row[3];
+$n_content = $notice_row[4];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,88 +21,85 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="img/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- <script type="text/javascript" src="intro.js"></script>  -->
     <script src="https://kit.fontawesome.com/fea8b3eafd.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <header>
         <!--nav-->
-    <!--로고 있는 top nav-->
-    <div class="top_nav container mt-2 mt-sm-0 mt-md-0 mt-lg-0">
-        <div class="row justify-content-between pt-lg-3 pt-sm-2 me-xxl-4 me-lg-0">
-            <div class="nav_logo col-4 col-xs-1 ps-lg-4">
-                <a href="index.php"><img class="top_nav_logo_img mt-1 pt-md-1 wd-75"
-                        src="https://cdn.imweb.me/thumbnail/20220504/5fd02ac97337a.png" alt="지구샵"
-                        width="158.535211268"></a>
-            </div>
-            <div
-                class="nav_nav col-4 col-xs-11 col-sm-6 col-md-5 pt-lg-2 pt-md-1 pt-sm-2 mt-lg-0 me-xxl-4 me-lg-1 me-2 pe-lg-0 pe-xl-4 px-0">
-                <a href="#" class="hidden login"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
-                <a href="login.html" class="sign_in_out"><span class="p-2" id="login">로그인</span></a>
-                <a href="#" class=""><span class="p-2" id="join" onclick="onclickLogout();">회원가입</span></a>
-                <a href="shop_cart.php"><span class="p-2"><i class="fa-solid fa-bag-shopping"></i></span></a>
-                <a href="#" class="hidden search"><i class="fa-solid fa-magnifying-glass"></i></a>
-            </div>
-        </div>
-    </div>
-    <!--//로고 있는 top nav-->
-
-    <!--메인 nav-->
-    <nav class="main_nav container mt-4 mb-3">
-        <div class="row">
-            <div class="left_nav col-lg-6 ms-lg-3 ms-md-0 ms-1 ms-sm-0 ms-md-0 ms-lg-0">
-                <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>MADE</span></a>
-                <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>장보기</span></a>
-                <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>지구소개</span></a>
-                <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>게시판</span></a>
-                <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>콘텐츠</span></a>
-                <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>제안하기</span></a>
-            </div>
-            <div class="right_nav col-lg-3 pt-1">
-                <a href="#" class="pe-2"><span>기획전</span></a>
-                <a href="#"><span>커뮤니티</span></a>
-            </div>
-            <div class="search_area col-lg-3">
-                <div class="search_type">
-                    <form>
-                        <input class="ps-3" type="text" placeholder="Search" style="outline: none;">
-                        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                    </form>
+        <!--로고 있는 top nav-->
+        <div class="top_nav container mt-2 mt-sm-0 mt-md-0 mt-lg-0">
+            <div class="row justify-content-between pt-lg-3 pt-sm-2 me-xxl-4 me-lg-0">
+                <div class="nav_logo col-4 col-xs-1 ps-lg-4">
+                    <a href="index.php"><img class="top_nav_logo_img mt-1 pt-md-1 wd-75"
+                            src="https://cdn.imweb.me/thumbnail/20220504/5fd02ac97337a.png" alt="지구샵"
+                            width="158.535211268"></a>
                 </div>
-                <!--//search_type-->
+                <div
+                    class="nav_nav col-4 col-xs-11 col-sm-6 col-md-5 pt-lg-2 pt-md-1 pt-sm-2 mt-lg-0 me-xxl-4 me-lg-1 me-2 pe-lg-0 pe-xl-4 px-0">
+                    <a href="#" class="hidden login"><i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+                    <a href="login.html" class="sign_in_out"><span class="p-2" id="login">로그인</span></a>
+                    <a href="#" class=""><span class="p-2" id="join" onclick="onclickLogout();">회원가입</span></a>
+                    <a href="shop_cart.php"><span class="p-2"><i class="fa-solid fa-bag-shopping"></i></span></a>
+                    <a href="#" class="hidden search"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </div>
             </div>
-            <!--//search_area-->
         </div>
-    </nav>
-    <!--//메인 nav-->
-    <!--//nav-->
+        <!--//로고 있는 top nav-->
+
+        <!--메인 nav-->
+        <nav class="main_nav container mt-4 mb-3">
+            <div class="row">
+                <div class="left_nav col-lg-6 ms-lg-3 ms-md-0 ms-1 ms-sm-0 ms-md-0 ms-lg-0">
+                    <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>MADE</span></a>
+                    <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>장보기</span></a>
+                    <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>지구소개</span></a>
+                    <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>게시판</span></a>
+                    <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>콘텐츠</span></a>
+                    <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>제안하기</span></a>
+                </div>
+                <div class="right_nav col-lg-3 pt-1">
+                    <a href="#" class="pe-2"><span>기획전</span></a>
+                    <a href="#"><span>커뮤니티</span></a>
+                </div>
+                <div class="search_area col-lg-3">
+                    <div class="search_type">
+                        <form>
+                            <input class="ps-3" type="text" placeholder="Search" style="outline: none;">
+                            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        </form>
+                    </div>
+                    <!--//search_type-->
+                </div>
+                <!--//search_area-->
+            </div>
+        </nav>
+        <!--//메인 nav-->
+        <!--//nav-->
     </header>
-    <!--main-->
-    <main>
-        <div class="container px-4 ">
-            <div class="search_tool row clear-fix mt-5">
-                <span class="col" style="font-size: 0.7em; color: 656565;">1개의 검색 결과</span>
-                <select class="col-lg-1 col-md-2 col-sm-1 me-lg-5" name="" id="">
-                    <option value="">최신순</option>
-                    <option value="">정확순</option>
-                </select>
-            </div><!--//search_tool-->
-            <div class="goods_list">
-                <div class="goods_item row mt-5">
-                    <img class="col-2 wd-75" src="img/goods_plate2.jpg" alt="">
-                    <div class="goods_ex col-10">
-                        <p class="m-0" style="font-size: 0.9em">[탄소창고] 5개입 친환경 그릇</p>
-                        <p class="m-0" style="font-size: 0.8em"><span>막 무슨 서렴ㅇ들일아ㅓ리어라ㅣ</span></p>
-                        <p class="m-0 fw-bolder" style="font-size: 0.8dem"><span class="text-success">4,000원</span></p>
-                    </div><!--//goods_ex-->
-                </div><!--//goods_item-->
-
-
-            </div><!--//goods_list-->
+    
+    <main> 
+        <div class="container px-4">
+            <!--//write_title-->
+            <div class="write_body">
+                <div class="row">
+                    <input type="text" class="col-lg-3 m-2 p-1" name="n_name" placeholder="이름" value="<?php echo $n_name ?>"
+                        style="border: none; outline: none;">
+                    <input type="password" class="col-lg-3 m-2" name="n_pw" placeholder="비밀번호" value="<?php echo $n_pw ?>"
+                        style="border: none; outline: none;">
+                </div>
+                <!--//row-->
+                <input type="text" class="mb-4" name="n_title" placeholder="제목" value="제목: <?php echo $n_title ?>"
+                    style="border: none; outline: none;">
+                <textarea class="form-control mb-3" rows="8" name="n_content" placeholder="내용을 입력해주세요"><?php echo $n_content ?></textarea>
+            </div><!--//write_body-->
+            
+            <div class="row">
+                <a class="col text-end text-decoration-none" href="notice_board.php"><span class="">돌아가기</span></a>
+            </div>
         </div><!--//container-->
-        <hr style="background: #646464;">
     </main>
 
     <footer>
@@ -183,11 +192,9 @@
                         src="https://cdn.imweb.me/thumbnail/20220217/a5d090c029b04.png"></div>
                 <div class="right col-9 col-sm-12 mt-4">
                     <ul>
-                        <li class="ms-0 pe-2"><a href="#" style="background-color: rgba(0,0,0,0);"><span>이용약관</span></a>
-                        </li>
+                        <li class="ms-0 pe-2"><a href="#" style="background-color: rgba(0,0,0,0);"><span>이용약관</span></a></li>
                         <li class="pe-2"><span>|</span></li>
-                        <li class="pe-2"><a href="#" style="background-color: rgba(0,0,0,0);"><span>개인정보처리방침</span></a>
-                        </li>
+                        <li class="pe-2"><a href="#" style="background-color: rgba(0,0,0,0);"><span>개인정보처리방침</span></a></li>
                         <li class="pe-2"><span>|</span></li>
                         <li><a href="#" style="background-color: rgba(0,0,0,0);"><span>도매 전용 B2B몰</span></a></li>
                     </ul>

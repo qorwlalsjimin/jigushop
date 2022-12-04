@@ -1,5 +1,11 @@
 <?php
-    session_start();
+session_start();
+
+if(isset($_SESSION['user_id']))
+    $user_id = $_SESSION['user_id']; //회원 아이디
+else 
+    $user_id = "guest"; 
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +41,6 @@
                 <!--로그인되어 있을때-->
                 <?php
                     if(isset($_SESSION['user_id'])){
-                        echo "<script>alert('".$_SESSION['user_id']."님 환영합니다');</script>";
                 ?>
                     <a href="#" class=""><span class="p-2" id="join" onclick="logout();">로그아웃</span></a>
 
@@ -45,13 +50,13 @@
                     else{
                 ?>
                     <a href="login.html" class="sign_in_out"><span class="p-2" id="login">로그인</span></a>
-                    <a href="#" class=""><span class="p-2" id="join">회원가입</span></a>
+                    <a href="join.html" class=""><span class="p-2" id="join">회원가입</span></a>
                 <?php
                     }
                 ?>
 
-                <a href="shop_cart.php"><span class="p-2"><i class="fa-solid fa-bag-shopping"></i></span></a>
-                <a href="search_result.html?search_word='비누'" class="hidden search"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="shop_cart.php?user_id=<?php echo $user_id; ?>"><span class="p-2"><i class="fa-solid fa-bag-shopping"></i></span></a>
+                <!-- <a href="search_result.html?search_word='비누'" class="hidden search"><i class="fa-solid fa-magnifying-glass"></i></a> -->
 
             </div>
         </div>
@@ -65,7 +70,7 @@
                 <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>MADE</span></a>
                 <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>장보기</span></a>
                 <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>지구소개</span></a>
-                <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>게시판</span></a>
+                <a class="pe-lg-3 pe-md-1 pe-sm-2" href="notice_board.php"><span>게시판</span></a>
                 <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>콘텐츠</span></a>
                 <a class="pe-lg-3 pe-md-1 pe-sm-2" href="#"><span>제안하기</span></a>
             </div>
@@ -75,9 +80,11 @@
             </div>
             <div class="search_area col-lg-3">
                 <div class="search_type">
-                    <form>
-                        <input class="ps-3" id="search_word" type="text" placeholder="Search" onkeypress="enterkey()" style="outline: none;">
-                        <a href="#" onclick="search()"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <form action='search_result.php'  method="get">
+                        <!-- TODO: enter 이벤트로도 넘어가게 하기 -->
+                        <input name="search_word" class="ps-3" id="search_word" type="text" placeholder="Search" onkeypress="enterkey();" style="outline: none;">
+                        <i class="fa-solid fa-magnifying-glass" onclick="search()"  style="cursor:pointer;"></i>
+                        <!-- <button id="search_btn" type="submit" style="display:none;"></button> -->
                     </form>
                 </div>
                 <!--//search_type-->
@@ -313,20 +320,20 @@
                     <div class="bundry1 pe-5 pb-0 pb-sm-4 pb-md-4 pb-lg-4 mt-0 mt-sm-3 mt-md-0">
                         <div class="right_item 1 col-12 col-sm-4 col-md-4 col-lg-4 mx-3">
                             <a href="goods_detail.php?id=7" class="text-decoration-none">
-                            <img class="right_item_img w-100" style="display: inline;"
-                                src="./img/goods_plate1.jpg"
-                                onmouseover="this.src=`./img/goods_plate2.jpg`"
-                                onmouseout="this.src=`./img/goods_plate1.jpg`"
-                            >
-                            <div class="h6 pt-3">[탄소창고] 손편한 앞접시 세트(5개입)</div>
-                            <div class="right_price">
-                                <p class="right_recent_price">15,000원</p>
-                            </div>
-                            <!--//right_price-->
-                            <div class="right_icon">
-                                <div class="NEWicon">NEW</div>
-                            </div>
-                            <!--right_icon-->
+                                <img class="right_item_img w-100" style="display: inline;"
+                                    src="./img/goods_plate1.jpg"
+                                    onmouseover="this.src=`./img/goods_plate2.jpg`"
+                                    onmouseout="this.src=`./img/goods_plate1.jpg`"
+                                >
+                                <div class="h6 pt-3">[탄소창고] 손편한 앞접시 세트(5개입)</div>
+                                <div class="right_price">
+                                    <p class="right_recent_price">15,000원</p>
+                                </div>
+                                <!--//right_price-->
+                                <div class="right_icon">
+                                    <div class="NEWicon">NEW</div>
+                                </div>
+                                <!--right_icon-->
                             </a>
                         </div>
                         <!--//right_item-->
@@ -572,9 +579,12 @@ function enterkey(){
 function search() {
     const search_word = document.getElementById('search_word').value;
     // document.getElementById("search_word").innerText = search_word;
-    if(search_word.length == 0)
+    if(search_word.length == 0){
         alert('검색어를 입력해주세요.');
-    else 
-        location.href='search_result.html';
+    }
+    else {
+        document.getElementById('search_btn').click()
+        location.href='search_result.php';
+    }
 }
 </script>

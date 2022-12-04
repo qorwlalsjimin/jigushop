@@ -1,21 +1,13 @@
-<!--DB의 내용을 불러와 장바구니를 보여주는 화면-->
 <?php
-// DB연동
-include('db_conn.php');
-
-// 사용자 아이디 받아오기
-$user_id = $_GET['user_id'];
-
-// 장바구니 추가된지 오래된 상품을 위에서부터 출력
-$arr = mysqli_query($conn, "select * from cart where user_id='$user_id' order by add_order");
-
-// 장바구니에 담긴 상품 개수
-$goods_cnt = mysqli_num_rows($arr);
-
-// TODO: 회원마다 장바구니를 가지고 있어야함
-// $user_id = 
-
+    $search_word = $_GET['search_word'];
+    if(strlen($search_word)==0)  //검색어가 없으면
+        echo "<script>history.back();</script>";
+    
+    include('db_conn.php');
+    $arr = mysqli_query($conn, "select * from goods where title like '%$search_word%' || ex like '%$search_word%' || brand like '%$search_word%'");
+    $goods_cnt = mysqli_num_rows($arr);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,12 +19,12 @@ $goods_cnt = mysqli_num_rows($arr);
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="img/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <script type="text/javascript" src="intro.js"></script>  -->
     <script src="https://kit.fontawesome.com/fea8b3eafd.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
     <header>
         <!--nav-->
         <!--로고 있는 top nav-->
@@ -85,66 +77,54 @@ $goods_cnt = mysqli_num_rows($arr);
         <!--//메인 nav-->
         <!--//nav-->
     </header>
-    
-    <main> 
-        <div class="shop-tit container mt-5 mx-5 px-4">
-            <div class="row">
-                <div class="col align-self-start d-lg-flex">
-                    <div class="text me-2 ms-5 h6 ">장바구니</div>
-                    <span class="b_cnt badge bg-secondary text-wrap rounded-circle lh-base">&nbsp;<?php echo $goods_cnt;?>&nbsp;</span>
-                </div>
-            </div><!--//row-->
-        </div><!--//shop-tit-->
-        
-        <table class="table container align-middle">
-                <tr><!--열 이름-->
-                    <th>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                        <small class="text-secondary lead" style="font-size: 0.8em;">상품 정보</small>
-                    </th>
-                    <th class="text-center"><small class="text-secondary lead" style="font-size: 0.8em;">수량</small></th>
-                    <th class="text-center"><small class="text-secondary lead" style="font-size: 0.8em;">주문금액</small></th>
-                </tr><!--//열 이름-->
 
-<?php
-//상품 리스트 출력
-for($i = 0; $i<mysqli_num_rows($arr); $i++){
-    $row = mysqli_fetch_row($arr);
-    echo "
-                <tr>
-                    <td class='d-flex py-3'>
-                        <div class='checkItem me-3'>
-                            <input class='form-check-input' type='checkbox' value='' id='flexCheckChecked' checked>
+    <!--main-->
+    <main>
+        <div class="container px-4 ">
+            <div class="search_tool row clear-fix mt-5">
+                <span class="col" style="font-size: 0.7em; color: 656565;"><?php echo $goods_cnt ?>개의 '<?php echo $search_word ?>' 검색 결과</span>
+                <select class="col-lg-1 col-md-2 col-sm-1 me-lg-5" name="" id="">
+                    <option value="">전체</option>
+                    <option value="">상품명</option>
+                    <option value="">상품 설명</option>
+                    <option value="">제조사</option>
+                </select>
+            </div><!--//search_tool-->
+            <div class="goods_list">
+                <?php
+                    if($goods_cnt == 0){
+                        echo "
+                        <div class='row text-center m-5 '>
+                            <span class='col align-self-center mb-5'>검색 결과가 없습니다.</span>
                         </div>
-                        <img class='ps-1 pe-4' src='$row[2]' alt='cart item' style='width: 15%;'>
-                        <p><a href='#' class='text-decoration-none'><small class='text-secondary' style='font-size: 0.9em;'>$row[1]</small></a></p>
-                    </td>
-                    <td class='py-3 text-center'>
-                        <div class='cntItem text-secondary'>$row[3]</div>
-                        <div class='changeItem_div mt-1'>
-                            <a class='btn_changeItem text-decoration-none bg-secondary text-white rounded p-1 lead' style='font-size: 0.7em;' href='#'>옵션/수량 변경</a>
-                        </div>
-                    </td>
-                    <td class='py-3 text-center'>
-                        <span class='price_text text-secondary h6' style='font-weight: bolder;'>$row[4]</span>
-                        <div class='directBuy_div mt-1'>
-                            <a class='btn_directBuy_div text-decoration-none bg-success text-white rounded p-1 lead' style='font-size: 0.7em;' href='#'>바로구매</a>
-                        </div>
-                    </td>
-                </tr>
-    ";
-}
-?>
+                        ";
+                    }
+                    for($i = 0; $i<$goods_cnt; $i++){
+                        $item_row = mysqli_fetch_row($arr);
+                ?>
+                <a href="goods_detail.php?id=<?php echo $item_row[0] ?>" class="text-decoration-none">
+                    <div class="goods_item row mt-5">
+                        <img class="col-2 wd-75"
+                            src="<?php echo $item_row[14] ?>" alt=""
+                            onmouseover="this.src=`<?php echo str_replace('1', '2', $item_row[14]) ?>`"
+                            onmouseout="this.src=`<?php echo $item_row[14] ?>`"
+                        >
+                        <div class="goods_ex col-10">
+                            <p class="m-0" style="font-size: 0.9em"><?php echo $item_row[1] ?></p>
+                            <p class="m-0" style="font-size: 0.8em"><span><?php echo $item_row[2] ?></span></p>
+                            <p class="m-0 fw-bolder" style="font-size: 0.8dem"><span class="text-success"><?php echo $item_row[9] ?>원</span></p>
+                        </div><!--//goods_ex-->
+                    </div><!--//goods_item-->
+                </a>
 
-                        <!-- 
-                            //상품 없을때
-                        <i class='fa-solid fa-cart-shopping text-secondary'></i>
-                        <div class='cart_message lead'><small class='text-secondary'>장바구니가 비어있습니다.</small> </div> 
-                        -->
-                <caption class="text-center"><a class="text-success" href="index.php">계속 쇼핑하기</a></caption>
-        </table>
+                <?php                        
+                    }
+                ?>
+
+            </div><!--//goods_list-->
+        </div><!--//container-->
+        <hr style="background: #646464;">
     </main>
-    
 
     <footer>
         <div class="num_info container mt-5 pb-4 mt-lg-5 mt-md-5">
@@ -236,9 +216,11 @@ for($i = 0; $i<mysqli_num_rows($arr); $i++){
                         src="https://cdn.imweb.me/thumbnail/20220217/a5d090c029b04.png"></div>
                 <div class="right col-9 col-sm-12 mt-4">
                     <ul>
-                        <li class="ms-0 pe-2"><a href="#" style="background-color: rgba(0,0,0,0);"><span>이용약관</span></a></li>
+                        <li class="ms-0 pe-2"><a href="#" style="background-color: rgba(0,0,0,0);"><span>이용약관</span></a>
+                        </li>
                         <li class="pe-2"><span>|</span></li>
-                        <li class="pe-2"><a href="#" style="background-color: rgba(0,0,0,0);"><span>개인정보처리방침</span></a></li>
+                        <li class="pe-2"><a href="#" style="background-color: rgba(0,0,0,0);"><span>개인정보처리방침</span></a>
+                        </li>
                         <li class="pe-2"><span>|</span></li>
                         <li><a href="#" style="background-color: rgba(0,0,0,0);"><span>도매 전용 B2B몰</span></a></li>
                     </ul>
