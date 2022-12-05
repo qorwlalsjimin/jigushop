@@ -1,3 +1,6 @@
+<?php
+$n_no = $_GET['no'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,10 +19,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <main>
         <div class="container mt-5">
-            <form action="notice_write_db.php" method="post">
+            <form action="notice_delete_process.php" method="post">
                 <div class="write_body row">
                     <span>비밀번호를 입력하세요</span>
                     <input type="password" name="pw" id="pw">
+                    <input type="hidden" name="no" value="<?php echo $n_no ?>">
                 </div><!--//write_body-->
             </form>
         </div><!--//container-->

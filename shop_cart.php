@@ -125,6 +125,7 @@ $goods_cnt = mysqli_num_rows($arr);
                     </th>
                     <th class="text-center"><small class="text-secondary lead" style="font-size: 0.8em;">수량</small></th>
                     <th class="text-center"><small class="text-secondary lead" style="font-size: 0.8em;">주문금액</small></th>
+                    <th class="text-center"><small class="text-secondary lead" style="font-size: 0.8em;">삭제</small></th>
                 </tr><!--//열 이름-->
 
 <?php
@@ -132,6 +133,7 @@ $goods_cnt = mysqli_num_rows($arr);
 for($i = 0; $i<mysqli_num_rows($arr); $i++){
     $row = mysqli_fetch_row($arr);
     $price = substr_replace((string)((int)$row[4]*(int)$row[3]),',',strlen((string)((int)$row[4]*(int)$row[3]))-3,0); //쉼표 넣은 값
+    $id = $row[0];
     // echo "<script>alert('$test')</script>";
     echo "
                 <tr>
@@ -155,6 +157,9 @@ for($i = 0; $i<mysqli_num_rows($arr); $i++){
                         <div class='directBuy_div mt-2'>
                             <a class='btn_directBuy_div text-decoration-none bg-success text-white rounded p-1 lead' style='font-size: 0.7em;' href='#'>바로구매</a>
                         </div>
+                    </td>
+                    <td class='py-3 text-center'>
+                        <a href='shop_cart_delete.php?id=$id' class='text-decoration-none'><span class='price_text text-secondary h6'>X</span></a>
                     </td>
                 </tr>
     ";
