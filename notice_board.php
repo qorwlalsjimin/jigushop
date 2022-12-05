@@ -123,7 +123,7 @@ session_start();
                 ?>
             </table>
             <div class="row">
-                <a class="col text-end text-decoration-none" href="notice_write.html"><span class="me-5">글쓰기</span></a>
+                <a class="col text-end text-decoration-none" href="notice_write.php"><span class="me-5">글쓰기</span></a>
             </div>
         </div>
 

@@ -117,8 +117,9 @@ $n_content = $notice_row[4];
                 <textarea class="form-control mb-3" rows="8" name="n_content" placeholder="내용을 입력해주세요" disabled><?php echo $n_content ?></textarea>
             </div><!--//write_body-->
             
-            <div class="row">
-                <a class="col text-end text-decoration-none" href="notice_board.php"><span class="">돌아가기</span></a>
+            <div class="row justify-content-end">
+                <a class="col-1 text-end text-decoration-none" href="notice_board.php"><span class="">삭제하기</span></a>
+                <a class="col-1 text-end text-decoration-none" href="notice_board.php"><span class="">돌아가기</span></a>
             </div>
         </div><!--//container-->
     </main>

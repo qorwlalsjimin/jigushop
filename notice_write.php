@@ -1,3 +1,11 @@
+<?php
+session_start();
+include('db_conn.php');
+$u_id = $_SESSION['user_id'];
+$user_arr = mysqli_query($conn, "select name from user_information where id='$u_id';");
+$user_row = mysqli_fetch_row($user_arr);
+$u_name = $user_row[0];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +38,7 @@
 
                 <div class="write_body">
                     <div class="row">
-                        <input type="text" class="col-lg-3 m-2 p-1" name="n_name" placeholder="이름"
+                        <input type="text" class="col-lg-3 m-2 p-1" name="n_name" placeholder="이름" value="<?php echo $u_name ?>"
                             style="border: none; outline: none;">
                         <input type="password" class="col-lg-3 m-2" name="n_pw" placeholder="비밀번호"
                             style="border: none; outline: none;">
