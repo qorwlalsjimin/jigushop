@@ -133,7 +133,7 @@ session_start();
                         <div class="goods_ex col-10">
                             <p class="m-0" style="font-size: 0.9em"><?php echo $item_row[1] ?></p>
                             <p class="m-0" style="font-size: 0.8em"><span><?php echo $item_row[2] ?></span></p>
-                            <p class="m-0 fw-bolder" style="font-size: 0.8dem"><span class="text-success"><?php echo $item_row[9] ?>원</span></p>
+                            <p class="m-0 fw-bolder" style="font-size: 0.8dem"><span class="text-success"><?php echo substr_replace($item_row[9],',',strlen($item_row[9])-3,0);  ?>원</span></p>
                         </div><!--//goods_ex-->
                     </div><!--//goods_item-->
                 </a>

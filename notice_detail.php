@@ -118,8 +118,8 @@ $n_content = $notice_row[4];
             </div><!--//write_body-->
             
             <div class="row justify-content-end">
-                <a class="col-1 text-end text-decoration-none" href="#"><span class="">삭제하기</span></a>
-                <!-- <a class="col-1 text-end text-decoration-none" href="notice_delete.php?no=<?php echo $n_no?>"><span class="">삭제하기</span></a> -->
+                <!-- <a class="col-1 text-end text-decoration-none" href="#"><span class="">삭제하기</span></a> -->
+                <a class="col-1 text-end text-decoration-none" href="notice_delete.php?no=<?php echo $n_no?>"><span class="">삭제하기</span></a>
                 <a class="col-1 text-end text-decoration-none" href="notice_board.php"><span class="">돌아가기</span></a>
             </div>
         </div><!--//container-->
